@@ -6,7 +6,7 @@ Role
 Inputs (provide/confirm before execution)
 - RE_CWE_PROMPTS_DIR: path to this repo (default ./re-cwe-prompts)
 - CWE: default CWE-22
-- TARGET_URL: full URL for the target, e.g., http://target:8010
+- TARGET_URL: full URL for the target, e.g., http://target:80
 - OUT_DIR: downstream prompts folder, e.g., ../docs/prompts
 
 What to generate
@@ -18,7 +18,7 @@ What to generate
   - 04_execute_deep_re.md
   - 05_fix_plan_and_reporting.md
   - 06_verification_scripts.md
-- Compute <TARGET_KEY> as <scheme>-<host>-<port>, e.g., http-target-8010
+- Compute <TARGET_KEY> as <scheme>-<host>-<port>, e.g., http-target-80
 - Replace placeholders in all files:
   - <TARGET_URL>, <TARGET_HOST>, <TARGET_PORT>, <TARGET_KEY>
 

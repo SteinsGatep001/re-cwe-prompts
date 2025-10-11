@@ -8,10 +8,12 @@ Constraints
 - Evidence under `targets-local/<target-key>/evidence/`; sanitized summary to `reports/`.
 
 Features
-- Parameter discovery from captures and query templates.
-- Context payload sets: HTML body, attribute, JS string, URL. Encodings: URL, HTML entities, double-encoding.
-- Heuristics: reflection detection, script tag injection traces, CSP/report-only hints, suspicious attributes.
-- Output artifacts: JSONL attempts + truncated responses; summary status line.
+- Captures-first parameter discovery (query, form, JSON keys) and route prioritization.
+- Surfaces: query, form (`application/x-www-form-urlencoded`), JSON (`application/json`), multipart fields, headers likely reflected (e.g., `Referer`, only if seen), path params.
+- Context payload sets: HTML body, attribute, JS string, URL; with URL/HTML entity/double encodings and Unicode homoglyphs.
+- Methods: GET and POST variants; preserve content-types seen in captures.
+- Heuristics: reflection detection with context markers, script tag traces, CSP/report-only hints, suspicious event attributes; anti‑CSRF detection to avoid state changes.
+- Output artifacts: JSONL (method, url, params/body keys, headers subset, status, indicators) + truncated responses; summary status line; sanitized summary.
 
 CLI
 - `--target-json`, `--out-dir`, `--max`, `--https-proxy`, `--http-proxy`.

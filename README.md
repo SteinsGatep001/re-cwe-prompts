@@ -35,14 +35,14 @@ Manual Quick Start (optional)
   - Steps: `examples/CWE-22/0{1..6}_*.md`
   - Replace placeholders and follow in order.
 
-Example Target Walkthrough (target:8010)
+Example Target Walkthrough (target:80)
 1) Init
-   - Create folders: `mkdir -p targets-local/http-target-8010/{evidence,captures}` `mkdir -p reports-private`
-   - Create `targets-local/http-target-8010/target.json` using `templates/target_info_template.json` as a guide. Do not commit secrets.
+   - Create folders: `mkdir -p targets-local/http-target-80/{evidence,captures}` `mkdir -p reports-private`
+   - Create `targets-local/http-target-80/target.json` using `templates/target_info_template.json` as a guide. Do not commit secrets.
 
 2) Discover routes (dynamic + static)
    - Dynamic: probe `GET /`, `/Storage.html`, `/api`, `/admin`; record headers and behavioral hints.
-   - Use `"$RE_CWE_PROMPTS_DIR/probes/CWE-22/python_probe_prompt.md"` to generate `scripts/probes/cwe22_probe.py` (reads `--target-json`; respects timeouts/rate limits). Save evidence in `targets-local/http-target-8010/evidence/`.
+   - Use `"$RE_CWE_PROMPTS_DIR/probes/CWE-22/python_probe_prompt.md"` to generate `scripts/probes/cwe22_probe.py` (reads `--target-json`; respects timeouts/rate limits). Save evidence in `targets-local/http-target-80/evidence/`.
    - Static (optional): in IDA/Ghidra, apply `"$RE_CWE_PROMPTS_DIR/workflows/discover_routes.md"` and `trace_to_fs_sinks.md` to identify dispatcher→handler→sink chains.
    - For deep RE strategies and guided prompts, open `rev-prompts/STRATEGY_OVERVIEW.md` then use templates under `rev-prompts/`:
      - `TEMPLATE_SESSION_BOOTSTRAP.md` — bootstrap the session, roles, and plan
@@ -62,13 +62,13 @@ Example Target Walkthrough (target:8010)
    - Use `workflows/generate_report.md` and `workflows/write_reports.md` to produce a report + summary.
 
 5) Verify by Python probe
-   - Run your generated probe, e.g.: `python3 scripts/probes/cwe22_probe.py --target-json targets-local/http-target-8010/target.json --max 50`
-   - Review outputs in `targets-local/http-target-8010/evidence/` and a sanitized summary in `reports/`.
+   - Run your generated probe, e.g.: `python3 scripts/probes/cwe22_probe.py --target-json targets-local/http-target-80/target.json --max 50`
+   - Review outputs in `targets-local/http-target-80/evidence/` and a sanitized summary in `reports/`.
    - After patching, re‑run to confirm mitigation.
 
 Modular External Prompts (copy-paste ready)
 - Use the master controller prompt:
-  - `local/EXTERNAL_AGENT_PROMPT_CWE22_target_8010_MASTER.md`
+  - `local/EXTERNAL_AGENT_PROMPT_CWE22_target_80_MASTER.md`
 - Then follow the modular steps in `local/prompts/`:
   - `01_init_and_context.md` — init target and evidence layout
   - `02_discover_and_dynamic_probe.md` — parse captures, discover routes, run probe
@@ -89,7 +89,7 @@ One-Prompt Bootstrap (generate downstream stubs)
 - Provide the agent with:
   - `RE_CWE_PROMPTS_DIR` (default `./re-cwe-prompts`)
   - `CWE` (e.g., `CWE-22`)
-  - `TARGET_URL` (e.g., `http://target:8010`)
+  - `TARGET_URL` (e.g., `http://target:80`)
   - `OUT_DIR` (e.g., `../docs/prompts`)
 - The agent should copy `examples/<CWE>/MASTER.md` and step files to `<OUT_DIR>/<CWE>/<scheme-host-port>/`, rendering placeholders: `<TARGET_URL>`, `<TARGET_HOST>`, `<TARGET_PORT>`, `<TARGET_KEY>`.
 - Alternative (no agent): run `scripts/export_prompts.sh --cwe CWE-22 --target-url http://host:port --out-dir ../docs/prompts`
@@ -97,7 +97,7 @@ One-Prompt Bootstrap (generate downstream stubs)
 Scaffold downstream prompts (docs/prompts)
 - Use the exporter script to render examples with your target values into a downstream project:
   - `bash scripts/export_prompts.sh --cwe CWE-22 \
-     --target-url http://target:8010 \
+     --target-url http://target:80 \
      --out-dir ../docs/prompts`
 - Options:
   - `--target-key` to override the auto-generated `<scheme-host-port>` key
@@ -117,7 +117,7 @@ Using in this project (end-to-end)
 - Initialize private folders at repo root (preferred):
   - `sh scripts/init_private_dirs.sh` (creates `targets-local/` and `reports-private/`, both gitignored)
 - Create per-target JSON:
-  - Follow `tutorials/init_target_info.md` and save to `targets-local/<scheme-host-port>/target.json` (e.g., `targets-local/http-target-8010/target.json`).
+  - Follow `tutorials/init_target_info.md` and save to `targets-local/<scheme-host-port>/target.json` (e.g., `targets-local/http-target-80/target.json`).
 - Dynamic testing via prompts:
   - Traversal probe (Python): open `probes/CWE-22/python_probe_prompt.md` and generate a script under your main repo (e.g., `scripts/probes/cwe22_probe.py`); run it with `--target-json targets-local/<...>/target.json`.
   - Captures import (HAR/cURL/Burp): place raw files under `targets-local/<...>/captures/` and use prompts in `captures/` to generate replay scripts. Never hardcode real IPs; always read `target.json`.

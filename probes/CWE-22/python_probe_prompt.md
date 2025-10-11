@@ -14,15 +14,22 @@ Inputs
 
 Expected features
 - Read `base_url`, TLS (`verify`, `sni_host`), `headers`, `routes`, `timeouts`, `rate_limit` from `target.json`.
-- Traverse-probe payload set (examples): `../`, `..%2f`, `%2e%2e/`, `%252e%252e/`, `..\`, mixed separators, double-encoded chains, trailing/leading encoded slashes.
-- Probe both route path and common static endpoints (e.g., `/Storage.html`, plus any listed in `routes`).
+- Captures-first seeding: prefer routes/params seen in `targets-local/<target-key>/captures/`.
+- Injection surfaces for traversal:
+  - Path segments (insert traversal at segment boundaries, with/without trailing slash)
+  - Query parameters (names from captures: `path`, `file`, `name`, `download`, etc.)
+  - Headers (only if observed): `X-Original-URL`, `X-Rewrite-URL`, `X-Accel-Redirect`, `Host`
+  - Bodies: `application/x-www-form-urlencoded` and `multipart/form-data` (Content-Disposition `filename`), mirroring real requests from captures
+- Payload families: `../`, `..%2f`, `%2e%2e/`, `%252e%252e/`, `..\\`, mixed separators, double-encoded chains, leading/trailing encoded slashes, Unicode dot variants.
+- Methods: attempt GET and POST (form/multipart) where appropriate.
 - Support optional auth from `target.json` (none/basic/digest/bearer) with standard libraries.
-- Timeouts and simple rate limiting (sleep between requests).
+- Timeouts, backoff on 429/5xx, and simple rate limiting with jitter.
 - HTTPS support via `verify` and optional `Host` header for SNI.
 - Output
-  - Console summary: vulnerable or not; first observed evidence indicator.
-  - Write raw responses (truncated) and a CSV/JSONL of attempts to `targets-local/<target-key>/evidence/`.
-  - Write a sanitized summary TXT to `reports/` using `workflows/write_reports.md` naming.
+  - Console summary: Vulnerable | Not Reproducible | Inconclusive + first indicator
+  - JSONL per attempt: method, url, params, headers subset, status, len, content-type, indicators, preview
+  - Truncated raw bodies and artifacts under `targets-local/<target-key>/evidence/`
+  - Sanitized summary TXT to `reports/` using `workflows/write_reports.md` naming
 
 Suggested file path (in your main repo)
 - `scripts/probes/cwe22_probe.py`
@@ -30,14 +37,14 @@ Suggested file path (in your main repo)
 High-level pseudocode
 ```
 load target.json
-init session (requests) with headers, auth, TLS verify
-build candidate URLs from base_url + routes + payload combinations
-for each candidate url:
-  send GET with timeouts
-  if response suggests traversal (e.g., passwd-like markers, XML/INI leaks, directory listings):
-    record evidence and mark vulnerable
-  sleep per rate limit
-summarize and write outputs
+seed routes/params/headers from target.json and captures
+init session with headers, auth, TLS verify
+build candidates across surfaces: path, query, headers, body (form/json/multipart)
+for each candidate (respect --max, rate_limit, backoff):
+  send request with timeouts
+  detect indicators (passwd-like markers, INI/XML keys, listings, path echoes)
+  write JSONL + truncated body artifact
+summarize and write outputs (reports/)
 ```
 
 Agent actions

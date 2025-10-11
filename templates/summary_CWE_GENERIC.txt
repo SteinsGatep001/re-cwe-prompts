@@ -1,6 +1,8 @@
 CWE-<ID> summary — <target> — <YYYYMMDD-HHMM>
 Status: <Vulnerable | Not Reproducible | Inconclusive>
-Key chain(s): <route→handler→sink>
+Attempts: <N>  Surfaces: <S>  Families: <F>
+Top route(s): <from captures>
+Key chain(s): <route→handler→utility→sink>
 Missing controls: <decode | validate | canonicalize | prefix>
+Suspect functions: <Handler_*@0x..., FS_Sink_*@0x...>
 Next steps: <patch area + retest>
-

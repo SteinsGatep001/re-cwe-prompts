@@ -1,18 +1,22 @@
 # Generate a Generic Traversal Report (Static + Dynamic)
 
-Sections
-1) Summary — CWE type and impact
-2) Environment — target, tools (IDA/Ghidra), probe scripts
-3) Dynamic evidence — per‑payload status/previews, sensitive disclosure if any
-4) Static analysis — role‑based call graph (2–3 hops), controls present/absent and order
-5) Root cause — missing/incorrect control chain
-6) Fix guidance — decode→validate segments→canonicalize→prefix‑check→FS
-7) Verification checklist — static re‑inspection + dynamic re‑probe
+Sections (recommended)
+1) Executive summary — CWE and impact
+2) Environment & scope — target, tools/versions, captures
+3) Captures & data processing — how request lines/params were extracted and used
+4) Mutation/probe strategy — surfaces, payload families, encodings, limits
+5) Dynamic results — attempts, indicators, status, evidence index
+6) Static analysis — role‑based call chains and guard order
+7) Key functions — per‑function summaries and guard status
+8) Root cause — where/why the chain fails
+9) Fix guidance — guard sequence and patch points
+10) Verification plan — static + dynamic re‑checks
 
 Assembly steps
 - Use decompiler + call graph to document roles and control placement
 - Keep names role‑oriented; avoid tool‑ or symbol‑specific labels in the final report
  - For IDA MCP command references, see `tool-notes/IDA_MCP.md`.
+ - Incorporate capture‑processing methodology and mutation strategy details to make results reproducible.
 
 File output instructions
 - Always include protocol in `<target>` (e.g., `http://example.local:8000` or `https://...`).
@@ -20,55 +24,17 @@ File output instructions
 - Write a brief summary to `reports/` using this pattern: `reports/CWE-22_Summary_<YYYYMMDD-HHMM>_<target>.txt`
 - If `reports/` does not exist, create it.
 
-Report template (Markdown)
-```
-# CWE-22 Directory Traversal — Report
-
-Generated: <YYYY-MM-DD HH:MM TZ>
-Target: <proto://host:port>
-Tools: <IDA MCP | Ghidra>, dynamic probe scripts: <scripts/...>
-Protocol/TLS: <http|https>, TLS verify: <true|false>, SNI/Host: <value if used>
-
-## 1) Summary
-<One-paragraph summary of vuln and impact>
-
-## 2) Environment
-- Binary/Version: <if known>
-- Analysis tools: <IDA/Ghidra versions>
-- Probe scripts and options: <script + key flags>
-
-## 3) Dynamic Evidence
-- Payloads tried: <list>
-- Responses: <status, key indicators>
-- Proof-of-concept disclosure (if any): <snippet or description>
-
-## 4) Static Analysis (Role-Based)
-- Dispatcher/Router: <fn label/address> → Handler: <fn> → Utility: <fn> → Sink: <fn>
-- Controls observed (order): <decode | validate segments | canonicalize | prefix-check | open>
-- Gaps: <which controls missing/misordered>
-
-## 5) Root Cause
-<Explain where/why controls are missing or post-sink>
-
-## 6) Fix Guidance
-- Apply guard sequence before any FS open:
-  1) Decode percent-encodings/UTF-8
-  2) Validate segments (ban "..", mixed separators, absolute roots)
-  3) Canonicalize (realpath) to absolute
-  4) Enforce base-directory prefix
-- Consider unit tests for negative/positive cases
-
-## 7) Verification Checklist
-- Static: confirm control sequence placement in handler
-- Dynamic: rerun probes (should be blocked or confined)
-```
+Refer to `templates/report_CWE_GENERIC.md` for a comprehensive Markdown report skeleton that includes captures, mutation strategy, dynamic results, key functions, and appendices.
 
 Summary template (TXT)
 ```
 CWE-22 summary — <target> — <YYYYMMDD-HHMM>
 Status: <Vulnerable | Not Reproducible | Inconclusive>
-Key route(s): <route hints / handler roles>
+Attempts: <N>  Surfaces: <S>  Families: <F>
+Top route(s): <from captures>
+Key chain(s): <route→handler→sink>
 Missing controls: <decode | validate | canonicalize | prefix>
+Suspect functions: <Handler_*@0x..., FS_Sink_*@0x...>
 Next steps: <patch area + retest>
 ```
 

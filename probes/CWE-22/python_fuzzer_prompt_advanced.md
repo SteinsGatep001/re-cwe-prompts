@@ -9,12 +9,14 @@ Constraints
 - Evidence under `targets-local/<target-key>/evidence/`; sanitized summary to `reports/`.
 
 Features
-- Seed extraction: from `target.json` routes and any captures (paths in `targets-local/<target-key>/captures/`).
+- Seed extraction: from `target.json` routes/params/headers and captures.
+- Surfaces: path segments, query params (names from captures), headers (`X-Original-URL`, `X-Rewrite-URL`, `X-Accel-Redirect`), bodies (form/json/multipart with `filename`).
 - Payload families: segments (`../`, `..%2f`, `%2e%2e/`, `%252e%252e/`, `..\\`), slashes (`/`, `%2f`, `%252f`, `\\`, `%5c`), depth 1..8.
-- Combinators: double-encoding, mixed separators, unicode dot variants, trailing/leading encoded slashes.
+- Combinators: double-encoding, mixed separators, unicode dot variants, trailing/leading encoded slashes, path normalization toggles.
+- Methods: GET + POST variants; multipart boundary case permutations (safe, non-destructive).
 - Generators: layered composition with caps (`--max`), deterministic seed for reproducibility.
-- Heuristics: regex matchers for passwd-like markers, INI/XML keys, directory listing patterns; response length and content-type deltas.
-- Output: JSONL attempts with fields (url, payload_id, status, len, indicators, preview), plus truncated response bodies.
+- Heuristics: regex matchers for passwd-like markers, INI/XML keys, directory listing patterns; response length/content-type deltas; path echo detection.
+- Output: JSONL attempts with fields (method, surface, url, payload_id, status, len, indicators, preview), plus truncated response bodies.
 
 CLI
 - `--target-json`, `--out-dir`, `--max`, `--seed`, `--https-proxy`, `--http-proxy`, `--auth` override (optional).
@@ -22,12 +24,12 @@ CLI
 Pseudocode
 ```
 load target.json
-seed routes from target.json and captures
-build payload generators (families × combinators) with cap
-for each route × payload:
-  send GET with timeouts, headers, auth
-  detect indicators; record attempt and write artifact
-  sleep per rate limit
+seed routes/params/headers from target.json and captures
+build payload generators (families × combinators × surfaces × methods) with cap
+for each candidate:
+  send request (timeouts, auth)
+  detect indicators; record JSONL and artifact
+  obey rate limit/backoff
 write sanitized summary to reports/
 print one-line status
 ```

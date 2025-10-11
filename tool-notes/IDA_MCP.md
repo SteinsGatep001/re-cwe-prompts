@@ -6,7 +6,7 @@ Kickoff Prompts
 - One-line (template):
   - 使用 ida-pro-mcp，严格按 <MASTER.md 路径> 的步骤顺序执行，且通过 MCP 完成函数/变量角色化重命名、注释、设置原型与类型、必要时创建栈变量与声明结构体，结束后写入 reports/ 报告与摘要（避免敏感信息）。
 - One-line（当前目标示例）:
-  - 使用 ida-pro-mcp，严格按 docs/prompts/CWE-22/http-192.168.159.249-8010/MASTER.md 的步骤顺序执行，且通过 MCP 完成函数/变量角色化重命名、注释、设置原型与类型、必要时创建栈变量与声明结构体，结束后写入 reports/ 报告与摘要（避免敏感信息）。
+  - 使用 ida-pro-mcp，严格按 docs/prompts/CWE-22/http-192.168.1.1-80/MASTER.md 的步骤顺序执行，且通过 MCP 完成函数/变量角色化重命名、注释、设置原型与类型、必要时创建栈变量与声明结构体，结束后写入 reports/ 报告与摘要（避免敏感信息）。
 
 - Expanded session directive (paste once, reusable):
   - 读取并遵循 <MASTER.md 路径>（CWE-22：MASTER → 01..06）。所有改名/注释/类型/结构体/栈变量创建均使用 MCP 接口完成：list_strings_filter、get_xrefs_to、decompile_function、get_callees、set_comment、rename_function、set_function_prototype、rename_local_variable、rename_stack_frame_variable、set_local_variable_type、set_stack_frame_variable_type、create_stack_frame_variable、declare_c_type、get_defined_structures、analyze_struct_detailed、convert_number。对相关函数与变量按“dispatcher/handler/sanitizer/sink/utility”角色进行命名与注释；在 FS sink 路径处执行 CWE‑22 审计（decode → segment validate → canonicalize(realpath) → prefix‑check → sink），缺失即在处理函数与 sink 处加注释说明。最后按 workflows/generate_report.md 和 write_reports.md 输出完整报告与简要摘要至 reports/。

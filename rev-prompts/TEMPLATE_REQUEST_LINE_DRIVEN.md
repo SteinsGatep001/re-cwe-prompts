@@ -5,7 +5,7 @@ Purpose
 
 Typical inputs
 - Request line: `<REQUEST_LINE>` (e.g., `GET /Storage.html?domainName=foo&LMD=bar HTTP/1.1`)
-- Target key: `<TARGET_KEY>` (e.g., `http-192.168.159.249-8010`)
+- Target key: `<TARGET_KEY>` (e.g., `http-192.168.1.1-80`)
 - Captures directory: `targets-local/<TARGET_KEY>/captures/` (pcaps/http logs)
 - Evidence output: `targets-local/<TARGET_KEY>/evidence/`
 - Prompts repo: `RE_CWE_PROMPTS_DIR=${RE_CWE_PROMPTS_DIR:-./re-cwe-prompts}`

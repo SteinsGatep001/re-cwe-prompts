@@ -7,8 +7,8 @@ Export example prompt pack into a downstream project (docs/prompts style)
 
 Usage:
   scripts/export_prompts.sh --cwe CWE-22 \
-    --target-url http://target:8010 \
-    [--target-key http-target-8010] \
+    --target-url http://target:80 \
+    [--target-key http-target-80] \
     [--out-dir ../docs/prompts] [--force]
 
 Notes:
