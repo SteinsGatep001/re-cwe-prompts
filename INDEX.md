@@ -12,3 +12,5 @@
 3) `workflows/gap_analysis_and_fix.md` — Apply CWE control checklist; define fix points
 4) `workflows/generate_report.md` — Produce a role‑based static+dynamic report
 
+## Cases (session seeds)
+- `cases/CWE-22_IDA_MCP_Session_Seed.md` — Paste into Codex/Claude with IDA MCP to run a generic CWE‑22 analysis
