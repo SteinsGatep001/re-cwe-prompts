@@ -18,6 +18,7 @@ Workflow
    - Extract: method, path, query, and salient segments (e.g., `Storage.html`, `api`, `admin`, file-like segments).
    - Canonicalize: decode `%2e`, `%2f`, `+`, and normalize path traversal sequences for searching.
    - Append to `targets-local/<TARGET_KEY>/evidence/static_notes.md` for traceability.
+   - Treat captures as primary evidence: if missing, acquire a minimal capture covering top routes. Maintain a `top_request_lines.txt` in `evidence/` for quick reference.
 
 2) Seed route hints (captures → target.json)
    - From `captures/`, enumerate unique paths and add/update `routes[]` in `targets-local/<TARGET_KEY>/target.json` (dedupe).
@@ -61,4 +62,3 @@ Ghidra checkpoints
 Linkages to existing prompts
 - Use with: `rev-prompts/TEMPLATE_DISPATCHER_DISCOVERY.md` and `TEMPLATE_SINK_TRACING.md` for systematic coverage.
 - For reporting/fix: `rev-prompts/TEMPLATE_REPORT_AND_FIX_PLAN.md` and `workflows/generate_report.md`.
-

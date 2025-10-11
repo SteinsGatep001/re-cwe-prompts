@@ -111,6 +111,31 @@ Action Snippets (copy/paste with placeholders)
 - Convert number base safely
   - ida-pro-mcp__convert_number with text "<num>" and size "<1|2|4|8>"
 
+Callee Documentation Pass (rename + annotate + prototype)
+- Goal: 让“当前函数”及其直接被调用者（callees）都有清晰的角色化命名与注释，必要时补全原型与类型。
+- One-shot directive（粘贴并替换 <FUNC_ADDR>）:
+  - 调用 ida-pro-mcp__get_callees(function_address "<FUNC_ADDR>")，对每个 callee：
+    1) ida-pro-mcp__decompile_function(<callee_addr>) 粗读功能
+    2) 如名称通用（sub_*/unknown），ida-pro-mcp__rename_function(<callee_addr>, "<Role_Name>")
+    3) ida-pro-mcp__set_comment(address "<callee_addr>", comment "role: <role>; purpose: <one-line>; upstream: <caller>; downstream: <sink/util>")
+    4) 如果参数/返回类型明显：ida-pro-mcp__set_function_prototype(<callee_addr>, "<ret> <Name>(<params>)")
+    5) 如需：rename_local_variable / rename_stack_frame_variable / set_local_variable_type / set_stack_frame_variable_type
+
+Structure/Type Documentation Pass（结构体/类型补全）
+- 需要为路径/请求/配置等数据建模时：
+  1) 用 ida-pro-mcp__declare_c_type 定义/调整 `struct <Name> { ... };` 或 typedef。
+  2) 将相关变量/全局设型：set_local_variable_type / set_global_variable_type。
+  3) 用 ida-pro-mcp__get_xrefs_to_field(struct_name, field_name) 收集使用点并在调用处 set_comment 标注用途（读取/写入/验证）。
+  4) 持续精炼字段名与类型；必要时重跑 declare_c_type 更新定义。
+
+Function Purpose Comment（函数目的注释模板）
+- 在函数入口或关键跳转前用 set_comment：
+  - `role: <dispatcher|router|handler|utility|sanitize|sink>`
+  - `purpose: <一句话功能描述>`
+  - `inputs: <关键参数/全局/结构体字段>`
+  - `outputs/effects: <返回值/副作用>`
+  - `notes: <关键算法/边界/异常路径>`
+
 Role‑Driven Rename Patterns
 - Dispatcher: Router_<Area>_Dispatch
 - Handler: Handler_<Area>_<Action>

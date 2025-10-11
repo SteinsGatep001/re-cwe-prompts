@@ -24,7 +24,8 @@ Scope files to load for context (do not print full contents, just skim structure
 
 Plan:
 1) Verify IDA MCP connection and binary is loaded.
-2) Discover request routes/dispatchers (generic, no specific names).
+2) Captures-first: parse request lines from `targets-local/<TARGET_KEY>/captures/`, update `routes[]` in target.json, and record top-N request lines under `evidence/`.
+3) Discover request routes/dispatchers (generic, no specific names).
 3) Trace routes to filesystem sinks.
 4) Do CWE‑22 gap analysis (decode→validate segments→canonicalize→prefix‑check).
 5) Add comments/rename functions to roles.
@@ -35,18 +36,22 @@ Actions:
 - Step 1 (connection)
   - Call ida-pro-mcp__check_connection. If disconnected, pause and ask me to open the IDA DB and start the plugin.
 
-- Step 2 (discover routes) — follow discover_routes.md
+- Step 2 (captures-first)
+  - Parse captures to extract request lines (method, path, query). Seed target.json routes; save top-N request lines under evidence.
+  - For static alignment from request lines, consult `rev-prompts/TEMPLATE_REQUEST_LINE_DRIVEN.md`.
+
+- Step 3 (discover routes) — follow discover_routes.md
   - List strings with HTTP markers: call ida-pro-mcp__list_strings_filter with patterns: "http", "GET ", "POST ", ".html", "cgi", ".do", "/api", "/admin", "domainName=", "Content-Type".
   - For each interesting string, call ida-pro-mcp__get_xrefs_to to find candidate dispatchers/handlers.
   - For each candidate function: ida-pro-mcp__decompile_function and ida-pro-mcp__get_callees.
   - Tag functions by role (dispatcher, router, handler, sanitizer, utility). Use ida-pro-mcp__set_comment to annotate roles; use ida-pro-mcp__rename_function only when names are generic (e.g., sub_1234 → Handler_StaticResource_Serve).
 
-- Step 3 (trace to FS sinks) — follow trace_to_fs_sinks.md
+- Step 4 (trace to FS sinks) — follow trace_to_fs_sinks.md
   - In handler call graphs (2–3 hops), search for filesystem APIs in pseudocode/asm: open, fopen, stat, access, opendir, readFile, CreateFile, PathCombine, realpath.
   - Confirm whether path inputs derive from request fields (URL path, query, form filenames). If needed, follow back through string builders and decode helpers.
   - Record each route→handler→utility→sink chain with comments (one comment per function mentioning upstream/downstream).
 
-- Step 4 (CWE‑22 gap analysis) — follow gap_analysis_and_fix.md and CWE-22.md
+- Step 5 (CWE‑22 gap analysis) — follow gap_analysis_and_fix.md and CWE-22.md
   - Check for the control sequence before any FS call:
     1) Decode/normalize percent-encodings and UTF‑8
     2) Validate path segments (ban "..", "." when not intended; handle mixed separators)
@@ -54,15 +59,15 @@ Actions:
     4) Prefix‑enforce against an allowed base directory
   - If any step is missing or done after the FS call, mark as vulnerable and add ida-pro-mcp__set_comment at the handler and sink.
 
-- Step 5 (rename/comment for clarity)
+- Step 6 (rename/comment for clarity)
   - For generic names starting with sub_, rename to descriptive role names (e.g., Router_Admin_Dispatch, Handler_StaticResource_Storage, FS_Sink_OpenRaw) using ida-pro-mcp__rename_function.
   - Add short comments ("Requires decode→segment validation→realpath→prefix before file open") using ida-pro-mcp__set_comment.
 
-- Step 6 (mini report)
+- Step 7 (mini report)
   - Produce a concise summary: affected routes, vulnerable chains, missing controls, recommended fix shape (guard function pseudocode).
   - Base structure on generate_report.md.
 
-- Step 7 (persist files) — follow write_reports.md
+- Step 8 (persist files) — follow write_reports.md
   - Create directory `reports/` if missing.
   - Write full Markdown report to: `reports/CWE-22_Report_<YYYYMMDD-HHMM>_<target>.md`.
   - Write short TXT summary to: `reports/CWE-22_Summary_<YYYYMMDD-HHMM>_<target>.txt`.

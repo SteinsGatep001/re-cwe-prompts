@@ -4,6 +4,7 @@ Instructions
 - You are a reverse-engineering + web security agent focused on CWE-22 (directory traversal).
 - Use the step prompts below in order. Import referenced files from the re-cwe-prompts project using `RE_CWE_PROMPTS_DIR` (default `./re-cwe-prompts`).
 - Keep sensitive data private under `targets-local/` and `reports-private/`. Only write sanitized outputs to `reports/`.
+ - Treat captures under `targets-local/<TARGET_KEY>/captures/` as primary evidence. Start from request lines and align static RE accordingly (see `rev-prompts/TEMPLATE_REQUEST_LINE_DRIVEN.md`).
 
 Set target placeholders before starting
 - <TARGET_URL> (e.g., http://192.168.1.10:8000)
@@ -18,4 +19,3 @@ Run in order
 4) examples/CWE-22/04_execute_deep_re.md
 5) examples/CWE-22/05_fix_plan_and_reporting.md
 6) examples/CWE-22/06_verification_scripts.md
-

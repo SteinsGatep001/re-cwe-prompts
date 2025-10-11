@@ -5,6 +5,9 @@ See also: `tool-notes/IDA_MCP.md` for IDA MCP command cheatsheet.
 Goal: Locate HTTP route dispatchers and candidate static handlers without relying on exact symbol names.
 
 Steps (IDA MCP / Ghidra)
+0) Seed from captures (primary)
+   - From `targets-local/<TARGET_KEY>/captures/`, extract request lines and dedupe paths into `routes[]` in target.json.
+   - Save top‑N request lines to `targets-local/<TARGET_KEY>/evidence/top_request_lines.txt`.
 1) Enumerate HTTP‑related strings
    - Search for: `HTTP/1`, `Content-Type`, `Location:`, common extensions (`.html`, `.css`, images)
 2) Xref to candidate dispatchers
