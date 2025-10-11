@@ -37,7 +37,7 @@ Strategy F — Dynamic-Assisted Static
 1) Generate scoped probes (e.g., traversal) using `probes/` prompts.
 2) Use responses to narrow suspect handlers; align with static call chains.
 
-IDA MCP checkpoints
+IDA MCP checkpoints (see `tool-notes/IDA_MCP.md`)
 - `list_strings_filter \/(GET|POST|route|Storage|download|file|path|api|admin)\/i`
 - `get_xrefs_to <addr>` for string and sink cross-refs
 - `decompile_function <addr>` for slicing handlers
@@ -52,4 +52,3 @@ Ghidra checkpoints
 Reporting
 - Keep role-based naming; avoid vendor/tool-specific noise.
 - Use `workflows/generate_report.md` and `workflows/write_reports.md`.
-

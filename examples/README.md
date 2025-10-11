@@ -17,3 +17,10 @@ Usage
 Available packs
 - CWE-22 (Directory Traversal): `examples/CWE-22/MASTER.md` and `01..06` step prompts
 
+## One promt
+
+### Decompile and rename
+
+> 使用 ida-pro-mcp，严格按 docs/prompts/CWE-22/http-192.168.159.249-8010/MASTER.md 的步骤顺序执行，且通过 MCP 完成函数/变量角色化重命名、注释、设置原型与类型、必要时创建栈变量与声明结构体，结束后写入 reports/ 报告与摘要（避免敏感信息）。
+
+

@@ -12,6 +12,7 @@ Sections
 Assembly steps
 - Use decompiler + call graph to document roles and control placement
 - Keep names role‑oriented; avoid tool‑ or symbol‑specific labels in the final report
+ - For IDA MCP command references, see `tool-notes/IDA_MCP.md`.
 
 File output instructions
 - Always include protocol in `<target>` (e.g., `http://example.local:8000` or `https://...`).

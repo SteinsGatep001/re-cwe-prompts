@@ -6,6 +6,7 @@ Purpose
 Notes
 - If the agent cannot read local files, ask me to paste contents of the referenced guides, or proceed based on the plan below.
 - Keep outputs minimal but actionable; add short comments and role‑oriented renames only.
+ - For IDA MCP command cheatsheet, see `re-cwe-prompts/tool-notes/IDA_MCP.md`.
 
 Starter prompt (copy/paste into the other session)
 

@@ -1,5 +1,7 @@
 # Discover Request Routes (Generic, No Specific Names)
 
+See also: `tool-notes/IDA_MCP.md` for IDA MCP cheatsheet and prompt snippets.
+
 Goal: Locate HTTP route dispatchers and candidate static content handlers without relying on exact symbol names.
 
 Steps (ida-pro-mcp)
@@ -18,4 +20,3 @@ Steps (ida-pro-mcp)
 
 4) Mark candidate static handlers
    - Handlers that build filesystem paths from request path + base directory and then invoke file existence/open routines are traversal candidates.
-

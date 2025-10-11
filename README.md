@@ -145,7 +145,7 @@ Preferred private paths
 - Avoid saving to `re-cwe-prompts/targets-local/` unless you are running this prompts repo in isolation.
 
 Using with IDA or Ghidra
-- IDA Pro MCP: use `list_strings_filter`, `get_xrefs_to`, `decompile_function`, `get_callees`, `set_comment`.
+- IDA Pro MCP: use `list_strings_filter`, `get_xrefs_to`, `decompile_function`, `get_callees`, `set_comment`. See `tool-notes/IDA_MCP.md` for a full cheatsheet.
 - Ghidra: use String Search, References, Decompiler, Call Tree/Function Graph, and Plate Comments. The same role‑based thinking applies.
 
 Session seeds (cases)
