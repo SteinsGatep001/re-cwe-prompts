@@ -1,30 +1,36 @@
-# Using These Prompts To Guide An AI Agent (Codex/Claude CLI)
+# Reverse Engineering CWE Prompts (Tool‑Agnostic: IDA, Ghidra)
 
-This folder contains pattern‑based prompts that teach an AI agent how to statically discover and report common web security weaknesses in binaries using IDA Pro MCP — without relying on specific symbol names. The prompts are modular so you can pick a CWE and apply the same generic workflow.
+Purpose
+- Pattern‑based prompts for guiding an AI agent (Codex/Claude) to discover, analyze, and report common web security weaknesses (CWEs) in binaries using disassemblers like IDA Pro or Ghidra. The prompts are generic and role‑based (dispatcher, handler, sanitizer, sink), so they work across tools and codebases.
 
-How to use
-- Step 1: Pick a CWE guide under `prompts/cwes/` (e.g., `CWE-22.md`, `CWE-601.md`, `CWE-79.md`).
-  - Learn the vulnerability pattern, typical sources/sinks, red flags, and desired fix shape.
-- Step 2: Run the generic workflow prompts in order:
-  1) `11_discover_routes_generically.md` — find HTTP route dispatchers/static handlers via strings/xrefs/decompile.
-  2) `12_trace_to_fs_sinks.md` — trace dispatcher→handler→utility→sink (2–3 hops), confirm sinks.
-  3) `13_gap_analysis_and_fix.md` — apply the CWE’s control checklist to locate gaps and define a fix.
-  4) `14_generate_report_generic.md` — produce a role‑based static+dynamic report.
+Repository layout
+- `cwes/` — CWE guides (pattern, sources/sinks, red flags, fix shape)
+- `workflows/` — Generic workflows used for any CWE (discover routes, trace sinks, gap analysis, generate report)
+- `cases/` — Ready-to-paste session seeds for common analyses (e.g., CWE-22 with IDA MCP)
+- `INDEX.md` — Quick index linking CWEs and workflows
+- `README_zh-CN.md` — 中文使用说明
 
-IDA Pro MCP actions commonly used
-- `list_strings_filter` — surface relevant strings (protocol markers, headers, MIME, “redirect”, “open”, extensions)
-- `get_xrefs_to` — jump from strings to code, identify dispatchers/handlers
-- `decompile_function` — inspect logic
-- `get_callees` — walk the call graph toward the sinks
-- `set_comment` — annotate functions with roles and security notes (keep role‑based, not name‑based)
+Quick start
+1) Pick a CWE guide under `cwes/` (e.g., `CWE-22.md`, `CWE-601.md`, `CWE-79.md`).
+2) Apply the workflows under `workflows/` in order:
+   - `discover_routes.md` — Find request dispatchers and static handlers via strings/xrefs/decompile.
+   - `trace_to_fs_sinks.md` — Trace dispatcher→handler→utility→sink (2–3 hops), confirm sinks/imports.
+   - `gap_analysis_and_fix.md` — Apply the CWE’s control checklist to locate gaps and define a fix.
+   - `generate_report.md` — Produce a role‑based static+dynamic report.
 
-General advice
-- Keep analysis role‑driven: use terms like dispatcher, static handler, path utility, validation/sanitizer, sink wrapper, import sink.
-- Never treat headers/templating as sanitizers unless they demonstrably constrain the attack surface for that CWE.
-- Blend static with targeted dynamic checks (e.g., a small Python probe script) to confirm impact.
+Using with IDA or Ghidra
+- IDA Pro MCP: use `list_strings_filter`, `get_xrefs_to`, `decompile_function`, `get_callees`, `set_comment`.
+- Ghidra: use String Search, References, Decompiler, Call Tree/Function Graph, and Plate Comments. The same role‑based thinking applies.
 
-Adding a new CWE guide
-- Copy `prompts/cwes/CWE-TEMPLATE.md` and fill in:
-  - Sources/sinks by role, red flags, high‑level ida‑mcp steps, dynamic spot‑checks, fix blueprint, reporting guidance.
-- Link the new file from `prompts/00_index.md`.
+Session seeds (cases)
+- For a quick start in another Codex/Claude session connected to IDA MCP, open and paste the seed from:
+  - `cases/CWE-22_IDA_MCP_Session_Seed.md`
+  - The seed references `cwes/CWE-22.md` and the generic workflows under `workflows/`.
 
+General guidance
+- Keep analysis role‑driven; don’t hard‑code symbol names.
+- Treat transformations (decode/normalize) and controls (validation, canonicalization, prefix checks) as first‑class.
+- Blend static with small dynamic probes where safe.
+
+Contributing new CWEs
+- Start from `cwes/CWE-TEMPLATE.md` and link it in `INDEX.md`.
