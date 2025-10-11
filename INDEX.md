@@ -42,7 +42,7 @@
 
 ## Probes (dynamic testing prompts)
 - `probes/README.md` — How to use probe prompts
-- `probes/cwe-22_python_probe_prompt.md` — Prompt to generate a Python traversal probe script
+- `probes/CWE-22/python_probe_prompt.md` — Prompt to generate a Python traversal probe script
 
 ## Captures (import & replay)
 - `captures/README.md` — Overview of importing and replaying HAR/cURL/Burp

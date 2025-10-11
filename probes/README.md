@@ -8,8 +8,14 @@ Where target metadata lives (private)
 - Keep raw evidence under `re-cwe-prompts/targets-local/<target-key>/evidence/`.
 - Keep full, unredacted reports under `re-cwe-prompts/reports-private/`.
 
+Structure
+- One folder per CWE: `probes/CWE-22/`, `probes/CWE-79/`, `probes/CWE-601/`, etc.
+- Within each folder, prompts are named by language/purpose, e.g.:
+  - `python_probe_prompt.md` — baseline probe
+  - `python_fuzzer_prompt_advanced.md` — advanced/combinatorial fuzzer (if applicable)
+
 How to use
-- Open the specific probe prompt (e.g., `cwe-22_python_probe_prompt.md`), paste it into your agent session, and follow instructions to generate a script in your main repo (not in this prompts repo).
+- Open the CWE-specific probe prompt (e.g., `CWE-22/python_probe_prompt.md`), paste it into your agent session, and follow instructions to generate a script in your main repo (not in this prompts repo).
 - Ensure the script reads `target.json`, respects rate limits, and writes evidence to the private folders.
 
 Safety and hygiene

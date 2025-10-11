@@ -19,3 +19,23 @@
 
 ## Desired fix shape
 - Decode to a stable form, split into segments, validate each segment, realpath the candidate path, enforce prefix containment, only then call FS sinks.
+
+## Advanced dynamic fuzz strategy
+- Payload families (mix and match):
+  - Segments: `../`, `..%2f`, `%2e%2e/`, `%252e%252e/`, `..\\`, `.%2e/`, `..;/`
+  - Slashes: `/`, `%2f`, `%252f`, `\\`, `%5c`
+  - Depth: repeat 1..8 segments; vary leading/trailing slashes
+  - Unicode: U+002E variants, normalization edge cases
+  - Absolute paths: `/etc/passwd`, `C:\\Windows\\win.ini` (for leakage indicators only)
+- Combinators:
+  - Join families: e.g., `..%2f..%2f`, `..\\..\\`, `..%252f..%252f`
+  - Double-encoded chains: `%252e%252e%255c` sequences
+  - Mixed separators: `/` with `\\`
+- Detection heuristics:
+  - Markers: `root:x:` snippet, `\r\n[General]`, XML/INI keys, directory listings
+  - Error echoes containing candidate path or normalized path
+  - Length deltas and content-type changes
+- Probe scope:
+  - Apply payloads to base routes and capture-derived endpoints
+  - Honor timeouts and rate limits from `target.json`
+- See also: `probes/CWE-22/python_probe_prompt.md` and `probes/CWE-22/python_fuzzer_prompt_advanced.md`
