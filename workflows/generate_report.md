@@ -14,6 +14,7 @@ Assembly steps
 - Keep names role‑oriented; avoid tool‑ or symbol‑specific labels in the final report
 
 File output instructions
+- Always include protocol in `<target>` (e.g., `http://example.local:8000` or `https://...`).
 - Write the full report to `reports/` using this pattern: `reports/CWE-22_Report_<YYYYMMDD-HHMM>_<target>.md`
 - Write a brief summary to `reports/` using this pattern: `reports/CWE-22_Summary_<YYYYMMDD-HHMM>_<target>.txt`
 - If `reports/` does not exist, create it.
@@ -25,6 +26,7 @@ Report template (Markdown)
 Generated: <YYYY-MM-DD HH:MM TZ>
 Target: <proto://host:port>
 Tools: <IDA MCP | Ghidra>, dynamic probe scripts: <scripts/...>
+Protocol/TLS: <http|https>, TLS verify: <true|false>, SNI/Host: <value if used>
 
 ## 1) Summary
 <One-paragraph summary of vuln and impact>

@@ -65,8 +65,7 @@
   - 若无 `reports/` 目录则创建。
   - 写入完整 Markdown 报告：`reports/CWE-22_Report_<YYYYMMDD-HHMM>_<target>.md`
   - 写入简要 TXT 摘要：`reports/CWE-22_Summary_<YYYYMMDD-HHMM>_<target>.txt`
-  - `<target>` 用目标 host:port 或 URL 替换。
+  - `<target>` 使用包含协议的 URL（如 `http://example.local:8000`）。若为 HTTPS，请记录 TLS 校验证书设置（verify true/false）以及 SNI/Host（如有）。
 
 按步骤执行，每一步给出所用的 IDA MCP 调用与简要结果；若未连通则暂停等待。
 """
-

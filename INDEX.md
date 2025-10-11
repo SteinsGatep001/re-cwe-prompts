@@ -35,3 +35,24 @@
 ## Templates
 - `templates/report_CWE_GENERIC.md` — Generic report skeleton
 - `templates/summary_CWE_GENERIC.txt` — Generic summary skeleton
+- `templates/target_info_template.json` — Per-target JSON template (private)
+
+## Tutorials
+- `tutorials/init_target_info.md` — Initialize per-target JSON and private folders
+
+## Probes (dynamic testing prompts)
+- `probes/README.md` — How to use probe prompts
+- `probes/cwe-22_python_probe_prompt.md` — Prompt to generate a Python traversal probe script
+
+## Captures (import & replay)
+- `captures/README.md` — Overview of importing and replaying HAR/cURL/Burp
+- `captures/har_replay_prompt.md` — HAR → Python replayer prompt
+- `captures/curl_import_prompt.md` — cURL → Python replayer prompt
+- `captures/burp_export_prompt.md` — Burp export → Python replayer prompt
+- `captures/sanitization.md` — Sanitization rules and outputs
+
+## Reference scripts (HTTP)
+- `scripts/README.md` — How to run the reference HTTP scripts
+- `scripts/http/common.py` — Build a requests session from target.json
+- `scripts/http/login.py` — Basic/Digest/Bearer login probe with cookie capture
+- `scripts/http/request.py` — Generic GET/POST/PUT (params/json/multipart)

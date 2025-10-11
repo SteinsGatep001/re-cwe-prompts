@@ -1,0 +1,4 @@
+# Local, sensitive (do not commit)
+targets-local/
+reports-private/
+captures-local/

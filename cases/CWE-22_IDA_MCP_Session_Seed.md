@@ -65,7 +65,7 @@ Actions:
   - Create directory `reports/` if missing.
   - Write full Markdown report to: `reports/CWE-22_Report_<YYYYMMDD-HHMM>_<target>.md`.
   - Write short TXT summary to: `reports/CWE-22_Summary_<YYYYMMDD-HHMM>_<target>.txt`.
-  - Replace `<target>` with the analyzed host:port or URL.
+  - Replace `<target>` with the analyzed URL including protocol (e.g., `http://example.local:8000`). If HTTPS is used, note TLS verify (true/false) and any SNI/Host header.
 
 Proceed step-by-step, showing the IDA MCP calls and concise results at each phase. Stop if connection is not available.
 """

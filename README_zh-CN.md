@@ -12,6 +12,7 @@
 - `checklists/` — 分析/修复/报告清单
 - `playbooks/` — 场景化指引（组合工作流与清单，例如静态资源）
 - `templates/` — 报告与摘要模板（被工作流复用）
+- `targets/` — 本地目标数据存放指引（仓库根目录使用 `targets-local/`，已加入 .gitignore）
 - `INDEX.md` — 索引（链接以上目录）
 - `README_zh-CN.md` — 中文说明
 
@@ -31,6 +32,7 @@ IDA / Ghidra 使用要点
 - 以“角色”（dispatcher/handler/sanitizer/sink）为核心组织分析；
 - 关注解码/归一化与安全控制（校验、路径规范化、前缀约束）的顺序与位置；
 - 在安全环境中用小脚本做最小化动态验证，辅助静态结论。
+- 敏感目标数据不要入库：使用根目录的 `targets-local/` 与 `reports-private/`（均已忽略）。提交到仓库的 `reports/` 应做脱敏处理。
 
 新增 CWE 指南
 - 以 `cwes/CWE-TEMPLATE.md` 为样板编写，并在 `INDEX.md` 中添加索引。

@@ -12,6 +12,9 @@ Repository layout
 - `checklists/` — Analysis, fix, and reporting checklists
 - `playbooks/` — Scenario-focused guides that combine workflows (e.g., static resources)
 - `templates/` — Report and summary templates used by workflows
+- `targets/` — Guidance for storing per-target sensitive data locally (gitignored at root as `targets-local/`)
+- `.gitignore` — Inside this folder, `targets-local/` and `reports-private/` are also ignored for standalone use
+ - `tutorials/` — Step-by-step guides (e.g., initializing target info JSON)
 - `INDEX.md` — Quick index linking CWEs and workflows
 - `README_zh-CN.md` — 中文使用说明
 
@@ -22,7 +25,21 @@ Quick start
    - `trace_to_fs_sinks.md` — Trace dispatcher→handler→utility→sink (2–3 hops), confirm sinks/imports.
    - `gap_analysis_and_fix.md` — Apply the CWE’s control checklist to locate gaps and define a fix.
    - `generate_report.md` — Produce a role‑based static+dynamic report.
-   - `write_reports.md` — Persist a full report and a short summary to `reports/`.
+    - `write_reports.md` — Persist a full report and a short summary to `reports/`.
+
+Using in this project (end-to-end)
+- Initialize private folders at repo root (preferred):
+  - `sh scripts/init_private_dirs.sh` (creates `targets-local/` and `reports-private/`, both gitignored)
+- Create per-target JSON:
+  - Follow `tutorials/init_target_info.md` and save to `targets-local/<scheme-host-port>/target.json` (e.g., `targets-local/http-192.168.159.249-8010/target.json`).
+- Dynamic testing via prompts:
+  - Traversal probe (Python): open `probes/cwe-22_python_probe_prompt.md` and generate a script under your main repo (e.g., `scripts/probes/cwe22_probe.py`); run it with `--target-json targets-local/<...>/target.json`.
+  - Captures import (HAR/cURL/Burp): place raw files under `targets-local/<...>/captures/` and use prompts in `captures/` to generate replay scripts. Never hardcode real IPs; always read `target.json`.
+- Static analysis in IDA MCP:
+  - Use `cases/CWE-22_IDA_MCP_Session_Seed.md` plus `workflows/` (discover routes → trace sinks → gap analysis). Use `roles/` and `tool-notes/` for consistent renames/comments and command references.
+- Reports and summaries:
+  - Generate per `workflows/generate_report.md` and write files per `workflows/write_reports.md`.
+  - Public sanitized copies go to `reports/`; private unredacted copies may go to `reports-private/`.
 
 Beyond CWEs (optional helpers)
 - Use `roles/README.md` to classify functions by role and drive consistent renaming/comments.
@@ -30,6 +47,16 @@ Beyond CWEs (optional helpers)
 - Use `checklists/` during analysis, fix definition, and reporting.
 - Use `playbooks/` for common end‑to‑end scenarios (e.g., static resources).
 - Use `templates/` if you want to generate reports programmatically.
+- Keep sensitive target data out of git: use the root‑level `targets-local/` and `reports-private/` (both gitignored). Public reports in `reports/` must be sanitized.
+  - Preferred location: `targets-local/<target-key>/` at the repository root (NOT under `re-cwe-prompts/`).
+  - Standalone prompts repo note: only if you are using this prompts repository by itself (outside a parent project), you may use `re-cwe-prompts/targets-local/` and `re-cwe-prompts/reports-private/` (both ignored via `re-cwe-prompts/.gitignore`).
+  - See `tutorials/init_target_info.md` for creating `target.json` under `targets-local/<target-key>/`.
+
+Preferred private paths
+- Root‑level is the default for all private artifacts:
+  - Targets (private JSON, captures, evidence): `targets-local/<target-key>/...`
+  - Private reports (unredacted): `reports-private/`
+- Avoid saving to `re-cwe-prompts/targets-local/` unless you are running this prompts repo in isolation.
 
 Using with IDA or Ghidra
 - IDA Pro MCP: use `list_strings_filter`, `get_xrefs_to`, `decompile_function`, `get_callees`, `set_comment`.

@@ -1,0 +1,39 @@
+{
+  "name": "example.local",
+  "base_url": "http://example.local:8000",
+  "protocol": "http",
+  "host": "example.local",
+  "port": 8000,
+  "tls": {
+    "enabled": false,
+    "verify": true,
+    "sni_host": ""
+  },
+  "auth": {
+    "type": "none",
+    "username": "",
+    "password": "",
+    "realm": "",
+    "nonce": "",
+    "opaque": "",
+    "token": ""
+  },
+  "headers": {
+    "User-Agent": "re-cwe-agent/1.0",
+    "Host": ""
+  },
+  "routes": [
+    "/Storage.html",
+    "/api",
+    "/admin"
+  ],
+  "timeouts": { "connect": 5.0, "read": 10.0 },
+  "proxy": { "http": "", "https": "" },
+  "rate_limit": { "rps": 2, "burst": 4 },
+  "notes": "Local test target",
+  "redaction_map": {
+    "example.local": "<target>",
+    "user@example.local": "<user>"
+  }
+}
+
