@@ -5,8 +5,14 @@
 
 目录结构
 - `cwes/` — CWE 指南（漏洞模式、来源/汇聚、风险信号、修复思路）
-- `workflows/` — 通用工作流（发现路由、追踪到敏感汇聚点、差距分析与修复、生成报告）
-- `INDEX.md` — 索引（链接 CWE 与工作流）
+- `workflows/` — 通用工作流（发现路由、追踪到敏感汇聚点、差距分析与修复、生成/落盘报告）
+- `cases/` — 会话“种子”示例（如：CWE‑22 + IDA MCP）
+- `roles/` — 角色定义与判别要点（分发器/处理器/净化器/敏感汇）
+- `tool-notes/` — 工具速查（IDA MCP、Ghidra）
+- `checklists/` — 分析/修复/报告清单
+- `playbooks/` — 场景化指引（组合工作流与清单，例如静态资源）
+- `templates/` — 报告与摘要模板（被工作流复用）
+- `INDEX.md` — 索引（链接以上目录）
 - `README_zh-CN.md` — 中文说明
 
 快速上手
@@ -28,4 +34,3 @@ IDA / Ghidra 使用要点
 
 新增 CWE 指南
 - 以 `cwes/CWE-TEMPLATE.md` 为样板编写，并在 `INDEX.md` 中添加索引。
-

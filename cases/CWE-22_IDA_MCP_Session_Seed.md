@@ -3,18 +3,23 @@
 Purpose
 - Copy this entire block into your Codex/Claude session that is connected to IDA MCP to drive a generic CWE‑22 analysis without relying on specific symbol names.
 
+Notes
+- If the agent cannot read local files, ask me to paste contents of the referenced guides, or proceed based on the plan below.
+- Keep outputs minimal but actionable; add short comments and role‑oriented renames only.
+
 Starter prompt (copy/paste into the other session)
 
 """
 You are connected to an IDA MCP environment. Goal: Apply a generic CWE‑22 (Directory Traversal) analysis using re‑cwe‑prompts.
 
-Scope files to load for context (do not print full contents, just skim structure and headings):
+Scope files to load for context (do not print full contents, just skim structure and headings). If file access fails, continue with the plan:
 - re-cwe-prompts/INDEX.md
 - re-cwe-prompts/cwes/CWE-22.md
 - re-cwe-prompts/workflows/discover_routes.md
 - re-cwe-prompts/workflows/trace_to_fs_sinks.md
 - re-cwe-prompts/workflows/gap_analysis_and_fix.md
 - re-cwe-prompts/workflows/generate_report.md
+- re-cwe-prompts/workflows/write_reports.md
 
 Plan:
 1) Verify IDA MCP connection and binary is loaded.
@@ -23,6 +28,7 @@ Plan:
 4) Do CWE‑22 gap analysis (decode→validate segments→canonicalize→prefix‑check).
 5) Add comments/rename functions to roles.
 6) Summarize a mini report.
+7) Persist report and summary files under `reports/`.
 
 Actions:
 - Step 1 (connection)
@@ -55,6 +61,11 @@ Actions:
   - Produce a concise summary: affected routes, vulnerable chains, missing controls, recommended fix shape (guard function pseudocode).
   - Base structure on generate_report.md.
 
+- Step 7 (persist files) — follow write_reports.md
+  - Create directory `reports/` if missing.
+  - Write full Markdown report to: `reports/CWE-22_Report_<YYYYMMDD-HHMM>_<target>.md`.
+  - Write short TXT summary to: `reports/CWE-22_Summary_<YYYYMMDD-HHMM>_<target>.txt`.
+  - Replace `<target>` with the analyzed host:port or URL.
+
 Proceed step-by-step, showing the IDA MCP calls and concise results at each phase. Stop if connection is not available.
 """
-

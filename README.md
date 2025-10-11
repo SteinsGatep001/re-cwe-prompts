@@ -7,6 +7,11 @@ Repository layout
 - `cwes/` — CWE guides (pattern, sources/sinks, red flags, fix shape)
 - `workflows/` — Generic workflows used for any CWE (discover routes, trace sinks, gap analysis, generate report)
 - `cases/` — Ready-to-paste session seeds for common analyses (e.g., CWE-22 with IDA MCP)
+- `roles/` — Role definitions and heuristics for dispatcher/handler/sanitizer/sink
+- `tool-notes/` — Quick references for IDA MCP and Ghidra
+- `checklists/` — Analysis, fix, and reporting checklists
+- `playbooks/` — Scenario-focused guides that combine workflows (e.g., static resources)
+- `templates/` — Report and summary templates used by workflows
 - `INDEX.md` — Quick index linking CWEs and workflows
 - `README_zh-CN.md` — 中文使用说明
 
@@ -17,6 +22,14 @@ Quick start
    - `trace_to_fs_sinks.md` — Trace dispatcher→handler→utility→sink (2–3 hops), confirm sinks/imports.
    - `gap_analysis_and_fix.md` — Apply the CWE’s control checklist to locate gaps and define a fix.
    - `generate_report.md` — Produce a role‑based static+dynamic report.
+   - `write_reports.md` — Persist a full report and a short summary to `reports/`.
+
+Beyond CWEs (optional helpers)
+- Use `roles/README.md` to classify functions by role and drive consistent renaming/comments.
+- Use `tool-notes/` as a quick reference for IDA MCP/Ghidra operations.
+- Use `checklists/` during analysis, fix definition, and reporting.
+- Use `playbooks/` for common end‑to‑end scenarios (e.g., static resources).
+- Use `templates/` if you want to generate reports programmatically.
 
 Using with IDA or Ghidra
 - IDA Pro MCP: use `list_strings_filter`, `get_xrefs_to`, `decompile_function`, `get_callees`, `set_comment`.
@@ -34,3 +47,8 @@ General guidance
 
 Contributing new CWEs
 - Start from `cwes/CWE-TEMPLATE.md` and link it in `INDEX.md`.
+
+Extending guidance beyond CWEs
+- Add role notes under `roles/` if you introduce new role conventions.
+- For tool specifics, extend `tool-notes/` rather than bloating workflows.
+- For repeatable scenarios, add a `playbooks/` page that references existing workflows and checklists.
