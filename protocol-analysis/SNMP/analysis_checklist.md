@@ -8,7 +8,7 @@
 
 - [ ] **Load binary in Ghidra GUI mode**
   ```bash
-  ./ghidrasage-gui .work/cases/<vendor>/<case_slug>
+  ./ghidrasage-gui work/cases/<vendor>/<case_slug>
   ```
 
 - [ ] **Verify MCP connection**
@@ -19,9 +19,9 @@
   ```
 
 - [ ] **Review case context**
-  - Read: `.work/cases/<vendor>/<case>/context/case_context.json`
-  - Read: `.work/cases/<vendor>/<case>/summaries/stage_a_summary.json`
-  - Read: `.work/cases/<vendor>/<case>/summaries/stage_c_summary.json`
+  - Read: `work/cases/<vendor>/<case>/context/case_context.json`
+  - Read: `work/cases/<vendor>/<case>/summaries/stage_a_summary.json`
+  - Read: `work/cases/<vendor>/<case>/summaries/stage_c_summary.json`
 
 - [ ] **Read CVE details** (if applicable)
   - CVE ID, CVSS score, affected versions
@@ -63,7 +63,7 @@
 ### 2.3 Build Initial Call Graph
 - [ ] From entry point: `get_function_call_graph(entry_func, depth=3, direction="callees")`
 - [ ] Visualize request flow: Dispatcher → Handlers → Sinks
-- [ ] Document in: `.work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/entrypoints.md`
+- [ ] Document in: `work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/entrypoints.md`
 
 ---
 
@@ -89,7 +89,7 @@ Reference: `handler_patterns.md`
   - Map all register calls
 
 - [ ] **Document findings:**
-  - File: `.work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/handlers.md`
+  - File: `work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/handlers.md`
   - Include: Handler table structure, PDU→function mappings, call graph
 
 ### 3.2 Trace GET Handler (30 min)
@@ -160,7 +160,7 @@ For each handler, check:
 - [ ] Trace from entry to each vulnerability
 - [ ] Build attack chain: Input → Processing → Sink
 - [ ] Identify missing sanitizers
-- [ ] Document in: `.work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/data_flow.md`
+- [ ] Document in: `work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/data_flow.md`
 
 ---
 
@@ -219,7 +219,7 @@ Reference: `renaming_standards.md` + `annotation_guidelines.md`
 
 ### 5.1 Generate Analysis Reports
 
-- [ ] **Full Analysis Report:** `.work/cases/<vendor>/<case>/analysis/stage_d/reports/FULL_ANALYSIS_REPORT.md`
+- [ ] **Full Analysis Report:** `work/cases/<vendor>/<case>/analysis/stage_d/reports/FULL_ANALYSIS_REPORT.md`
   - Executive summary
   - Entry points discovered
   - Handler mappings
@@ -227,13 +227,13 @@ Reference: `renaming_standards.md` + `annotation_guidelines.md`
   - Vulnerabilities found
   - Call graphs
 
-- [ ] **Vulnerability Details:** `.work/cases/<vendor>/<case>/analysis/stage_d/reports/VULNERABILITY_DETAILS.md`
+- [ ] **Vulnerability Details:** `work/cases/<vendor>/<case>/analysis/stage_d/reports/VULNERABILITY_DETAILS.md`
   - Each vulnerability with CWE
   - Attack scenarios
   - Proof-of-concept code
   - Exploitability assessment
 
-- [ ] **Fix Recommendations:** `.work/cases/<vendor>/<case>/analysis/stage_d/reports/FIX_RECOMMENDATIONS.md`
+- [ ] **Fix Recommendations:** `work/cases/<vendor>/<case>/analysis/stage_d/reports/FIX_RECOMMENDATIONS.md`
   - Code patches
   - Configuration changes
   - Security best practices
@@ -243,11 +243,11 @@ Reference: `renaming_standards.md` + `annotation_guidelines.md`
 - [ ] Export call graphs: `get_full_call_graph(format="mermaid")`
 - [ ] Save decompiled code of key functions
 - [ ] Screenshot vulnerable code in Ghidra
-- [ ] Save to: `.work/cases/<vendor>/<case>/analysis/stage_d/evidence/`
+- [ ] Save to: `work/cases/<vendor>/<case>/analysis/stage_d/evidence/`
 
 ### 5.3 Update Stage Summary
 
-- [ ] Create: `.work/cases/<vendor>/<case>/summaries/stage_d_summary.json`
+- [ ] Create: `work/cases/<vendor>/<case>/summaries/stage_d_summary.json`
 - [ ] Include:
   - Entry points found
   - Handlers mapped

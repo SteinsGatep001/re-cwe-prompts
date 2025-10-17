@@ -94,9 +94,9 @@ Complete Analysis Workflow
 - **Interactive RE Workflow:** `docs/stage_d/guides/10-interactive-reverse-engineering.md`
 
 ### External Resources
-- **Ghidra MCP Project:** `.work/ref/ghidra-mcp/README.md`
-- **API Reference:** `.work/ref/ghidra-mcp/docs/API_REFERENCE.md`
-- **Development Guide:** `.work/ref/ghidra-mcp/docs/DEVELOPMENT_GUIDE.md`
+- **Ghidra MCP Project:** `work/ref/ghidra-mcp/README.md`
+- **API Reference:** `work/ref/ghidra-mcp/docs/API_REFERENCE.md`
+- **Development Guide:** `work/ref/ghidra-mcp/docs/DEVELOPMENT_GUIDE.md`
 
 ---
 
@@ -204,7 +204,7 @@ batch_2 = list_functions(offset=100, limit=100)
 
 **Changelog:**
 - 2025-10-12: Initial creation based on Ghidra MCP v1.2.0
-- Synthesized from `.work/ref/ghidra-mcp/` and `tool-notes/Ghidra_MCP_Comprehensive.md`
+- Synthesized from `work/ref/ghidra-mcp/` and `tool-notes/Ghidra_MCP_Comprehensive.md`
 
 ---
 

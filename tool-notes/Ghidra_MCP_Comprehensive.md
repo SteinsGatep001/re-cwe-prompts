@@ -537,9 +537,9 @@ for crypto_func in crypto_funcs:
 
 ## 📚 Additional Resources
 
-- **API Reference**: `.work/ref/ghidra-mcp/docs/API_REFERENCE.md`
-- **Development Guide**: `.work/ref/ghidra-mcp/docs/DEVELOPMENT_GUIDE.md`
-- **Example Code**: `.work/ref/ghidra-mcp/examples/demo_evolution.py`
+- **API Reference**: `work/ref/ghidra-mcp/docs/API_REFERENCE.md`
+- **Development Guide**: `work/ref/ghidra-mcp/docs/DEVELOPMENT_GUIDE.md`
+- **Example Code**: `work/ref/ghidra-mcp/examples/demo_evolution.py`
 - **CWE Guides**: `prompts/re-cwe-prompts/cwes/`
 - **Workflows**: `prompts/re-cwe-prompts/workflows/`
 

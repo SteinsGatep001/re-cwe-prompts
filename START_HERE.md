@@ -211,7 +211,7 @@ set_decompiler_comment(vuln_addr, """
 创建 3 个报告文件：
 
 ### 5.1 完整分析报告
-路径: `.work/cases/<vendor>/<case>/analysis/stage_d/reports/FULL_ANALYSIS_REPORT.md`
+路径: `work/cases/<vendor>/<case>/analysis/stage_d/reports/FULL_ANALYSIS_REPORT.md`
 
 ```markdown
 # SNMP 漏洞分析 - 完整报告
@@ -246,7 +246,7 @@ set_decompiler_comment(vuln_addr, """
 ```
 
 ### 5.2 漏洞细节报告
-路径: `.work/cases/<vendor>/<case>/analysis/stage_d/reports/VULNERABILITY_DETAILS.md`
+路径: `work/cases/<vendor>/<case>/analysis/stage_d/reports/VULNERABILITY_DETAILS.md`
 
 包含每个漏洞的：
 - 详细代码分析
@@ -255,7 +255,7 @@ set_decompiler_comment(vuln_addr, """
 - CVSS 评分
 
 ### 5.3 修复建议报告
-路径: `.work/cases/<vendor>/<case>/analysis/stage_d/reports/FIX_RECOMMENDATIONS.md`
+路径: `work/cases/<vendor>/<case>/analysis/stage_d/reports/FIX_RECOMMENDATIONS.md`
 
 包含：
 - 立即修复措施 (代码补丁)

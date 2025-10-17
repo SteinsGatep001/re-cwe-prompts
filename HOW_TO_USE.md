@@ -41,7 +41,7 @@
 **1. 启动 Ghidra GUI**
 ```bash
 cd /home/dev13/Documents/Tools/Develop/AI/GhidraSage
-./ghidrasage-gui .work/cases/<vendor>/<case_slug>
+./ghidrasage-gui work/cases/<vendor>/<case_slug>
 ```
 
 **2. 启动新的 AI Agent 会话**
@@ -84,7 +84,7 @@ prompts/re-cwe-prompts/START_HERE.md
 
 **1. 启动 Ghidra GUI**
 ```bash
-./ghidrasage-gui .work/cases/<vendor>/<case_slug>
+./ghidrasage-gui work/cases/<vendor>/<case_slug>
 ```
 
 **2. 阅读分阶段提示词文档**
@@ -149,7 +149,7 @@ Agent 会告诉你："我准备好进入阶段 1 了"
 
 **1. 阅读架构设计文档**
 ```
-.work/docs/DEEP_REVERSE_ENGINEERING_OPTIMIZATION_PLAN.md
+work/docs/DEEP_REVERSE_ENGINEERING_OPTIMIZATION_PLAN.md
 ```
 了解 3 层架构和 5 阶段工作流的设计理念
 
@@ -193,7 +193,7 @@ prompts/re-cwe-prompts/protocol-analysis/SNMP/
 
 ```bash
 # 1. 启动 Ghidra GUI
-./ghidrasage-gui .work/cases/cisco/CVE-2025-20362
+./ghidrasage-gui work/cases/cisco/CVE-2025-20362
 
 # 2. 新 Claude 会话，发送：
 你是专业逆向工程师，任务是分析 SNMP 漏洞。
@@ -202,9 +202,9 @@ prompts/re-cwe-prompts/protocol-analysis/SNMP/
 ```
 
 **3-5 小时后，Agent 会给你：**
-- `.work/cases/cisco/CVE-2025-20362/analysis/stage_d/reports/FULL_ANALYSIS_REPORT.md`
-- `.work/cases/cisco/CVE-2025-20362/analysis/stage_d/reports/VULNERABILITY_DETAILS.md`
-- `.work/cases/cisco/CVE-2025-20362/analysis/stage_d/reports/FIX_RECOMMENDATIONS.md`
+- `work/cases/cisco/CVE-2025-20362/analysis/stage_d/reports/FULL_ANALYSIS_REPORT.md`
+- `work/cases/cisco/CVE-2025-20362/analysis/stage_d/reports/VULNERABILITY_DETAILS.md`
+- `work/cases/cisco/CVE-2025-20362/analysis/stage_d/reports/FIX_RECOMMENDATIONS.md`
 
 ### 示例 2：使用方案 B (分阶段引导)
 
@@ -212,7 +212,7 @@ prompts/re-cwe-prompts/protocol-analysis/SNMP/
 
 ```bash
 # 1. 启动 Ghidra GUI
-./ghidrasage-gui .work/cases/cisco/CVE-2025-20362
+./ghidrasage-gui work/cases/cisco/CVE-2025-20362
 
 # 2. 阅读
 cat prompts/re-cwe-prompts/PHASED_PROMPTS_FOR_USER.md
@@ -251,7 +251,7 @@ cat prompts/re-cwe-prompts/PHASED_PROMPTS_FOR_USER.md
 ps aux | grep ghidra
 
 # 重新启动 GUI
-./ghidrasage-gui .work/cases/<vendor>/<case>
+./ghidrasage-gui work/cases/<vendor>/<case>
 ```
 
 ### Q2: Agent 找不到 SNMP 入口点
@@ -279,7 +279,7 @@ ps aux | grep ghidra
 
 **解决方案:**
 - 检查 Agent 提供的证据 (反编译代码)
-- 查看 `.work/cases/<vendor>/<case>/analysis/stage_d/evidence/`
+- 查看 `work/cases/<vendor>/<case>/analysis/stage_d/evidence/`
 - 要求 Agent 提供更详细的利用场景
 
 ---
@@ -289,10 +289,10 @@ ps aux | grep ghidra
 **完成分析后，检查以下项目：**
 
 ### 文件存在性检查：
-- [ ] `.work/cases/<vendor>/<case>/analysis/stage_d/reports/FULL_ANALYSIS_REPORT.md`
-- [ ] `.work/cases/<vendor>/<case>/analysis/stage_d/reports/VULNERABILITY_DETAILS.md`
-- [ ] `.work/cases/<vendor>/<case>/analysis/stage_d/reports/FIX_RECOMMENDATIONS.md`
-- [ ] `.work/cases/<vendor>/<case>/summaries/stage_d_summary.json`
+- [ ] `work/cases/<vendor>/<case>/analysis/stage_d/reports/FULL_ANALYSIS_REPORT.md`
+- [ ] `work/cases/<vendor>/<case>/analysis/stage_d/reports/VULNERABILITY_DETAILS.md`
+- [ ] `work/cases/<vendor>/<case>/analysis/stage_d/reports/FIX_RECOMMENDATIONS.md`
+- [ ] `work/cases/<vendor>/<case>/summaries/stage_d_summary.json`
 
 ### 报告质量检查：
 - [ ] 完整分析报告至少 10 页
@@ -325,7 +325,7 @@ ps aux | grep ghidra
 鼓励 Agent 在每个阶段结束时保存笔记：
 ```
 在完成阶段 1 后，创建笔记文件：
-.work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/phase1_notes.md
+work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/phase1_notes.md
 ```
 
 ### 3. 适时介入
@@ -384,7 +384,7 @@ ps aux | grep ghidra
    - `PHASED_PROMPTS_FOR_USER.md`: 具体提示词
 
 2. **检查日志:**
-   - `.work/logs/`: MCP 连接日志
+   - `work/logs/`: MCP 连接日志
    - Ghidra Console: 工具执行输出
 
 3. **回滚和重试:**

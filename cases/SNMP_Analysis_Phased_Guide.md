@@ -337,7 +337,7 @@ Reference report templates:
 
 ### 5.1 Generate Full Analysis Report
 
-Create file: `.work/cases/<vendor>/<case>/analysis/stage_d/reports/FULL_ANALYSIS_REPORT.md`
+Create file: `work/cases/<vendor>/<case>/analysis/stage_d/reports/FULL_ANALYSIS_REPORT.md`
 
 Include these sections:
 1. Executive Summary (2-3 paragraphs)
@@ -351,7 +351,7 @@ Include these sections:
 
 ### 5.2 Generate Vulnerability Details Report
 
-Create file: `.work/cases/<vendor>/<case>/analysis/stage_d/reports/VULNERABILITY_DETAILS.md`
+Create file: `work/cases/<vendor>/<case>/analysis/stage_d/reports/VULNERABILITY_DETAILS.md`
 
 For each vulnerability, include:
 - Vulnerability location (function name + address + code line)
@@ -364,7 +364,7 @@ For each vulnerability, include:
 
 ### 5.3 Generate Fix Recommendations Report
 
-Create file: `.work/cases/<vendor>/<case>/analysis/stage_d/reports/FIX_RECOMMENDATIONS.md`
+Create file: `work/cases/<vendor>/<case>/analysis/stage_d/reports/FIX_RECOMMENDATIONS.md`
 
 Organize into three tiers:
 
@@ -386,13 +386,13 @@ Organize into three tiers:
 ### 5.4 Save Evidence Files
 
 - Export call graph: get_full_call_graph(format="mermaid")
-- Save to: `.work/cases/<vendor>/<case>/analysis/stage_d/evidence/call_graphs/`
+- Save to: `work/cases/<vendor>/<case>/analysis/stage_d/evidence/call_graphs/`
 - Screenshot critical functions
 - Save decompiled code
 
 ### 5.5 Update Stage D Summary
 
-Create file: `.work/cases/<vendor>/<case>/summaries/stage_d_summary.json`
+Create file: `work/cases/<vendor>/<case>/summaries/stage_d_summary.json`
 
 Format:
 {
@@ -449,7 +449,7 @@ Check these items:
 - [ ] All critical handler functions have header comments
 - [ ] All vulnerability locations have security annotations
 - [ ] Complex logic has inline comments
-- [ ] All reports saved in correct location (.work/cases/)
+- [ ] All reports saved in correct location (work/cases/)
 - [ ] Evidence chain complete (code + screenshots + call graphs)
 
 ### Reproducibility:

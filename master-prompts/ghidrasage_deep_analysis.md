@@ -27,7 +27,7 @@ Before starting, verify:
 
 - [ ] **Ghidra GUI is running** with the target binary loaded
 - [ ] **MCP connection active** at `http://127.0.0.1:8765/mcp`
-- [ ] **Case directory exists:** `.work/cases/<vendor>/<case>/`
+- [ ] **Case directory exists:** `work/cases/<vendor>/<case>/`
 - [ ] **You have read:**
   - This master prompt (you are here)
   - `protocol-analysis/SNMP/analysis_checklist.md` (your step-by-step guide)
@@ -68,11 +68,11 @@ Phase 5: Report Generation       (30 min)
 **Read case context:**
 ```bash
 # Case information
-.work/cases/<vendor>/<case>/context/case_context.json
+work/cases/<vendor>/<case>/context/case_context.json
 
 # Previous stage outputs
-.work/cases/<vendor>/<case>/summaries/stage_a_summary.json  # CVE info
-.work/cases/<vendor>/<case>/summaries/stage_c_summary.json  # Fingerprints
+work/cases/<vendor>/<case>/summaries/stage_a_summary.json  # CVE info
+work/cases/<vendor>/<case>/summaries/stage_c_summary.json  # Fingerprints
 ```
 
 **Gather binary information:**
@@ -133,7 +133,7 @@ print(f"Found {len(pdu_strings)} PDU type strings")
 
 **Save findings to:**
 ```
-.work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/phase1_context.md
+work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/phase1_context.md
 ```
 
 ---
@@ -213,14 +213,14 @@ for edge in call_graph:
     print(f"  {edge}")
 
 # Save call graph
-with open(".work/cases/<vendor>/<case>/analysis/stage_d/evidence/call_graphs/entry_to_handlers.txt", "w") as f:
+with open("work/cases/<vendor>/<case>/analysis/stage_d/evidence/call_graphs/entry_to_handlers.txt", "w") as f:
     for edge in call_graph:
         f.write(edge + "\n")
 ```
 
 **Save findings to:**
 ```
-.work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/entrypoints.md
+work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/entrypoints.md
 ```
 
 ---
@@ -276,7 +276,7 @@ for func in register_funcs:
 
 **Save to:**
 ```
-.work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/handlers.md
+work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/handlers.md
 ```
 
 ### 3.2 Analyze Each Handler (45 min)
@@ -471,7 +471,7 @@ for func in parse_funcs:
 
 **Save all vulnerabilities to:**
 ```
-.work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/risk_functions.md
+work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/risk_functions.md
 ```
 
 ### 3.4 Data Flow Analysis (30 min)
@@ -522,7 +522,7 @@ VULNERABLE: strcpy(oid_buffer, request->oid) [0x00405234]
 
 **Save to:**
 ```
-.work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/data_flow.md
+work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/data_flow.md
 ```
 
 ---
@@ -734,7 +734,7 @@ for handler in handlers:
 
 **Save to:**
 ```
-.work/cases/<vendor>/<case>/analysis/stage_d/reports/FULL_ANALYSIS_REPORT.md
+work/cases/<vendor>/<case>/analysis/stage_d/reports/FULL_ANALYSIS_REPORT.md
 ```
 
 ### 5.2 Generate Vulnerability Details Report
@@ -826,7 +826,7 @@ int handler_snmp_get_request_FIXED(snmp_request *request, snmp_response *respons
 
 **Save to:**
 ```
-.work/cases/<vendor>/<case>/analysis/stage_d/reports/VULNERABILITY_DETAILS.md
+work/cases/<vendor>/<case>/analysis/stage_d/reports/VULNERABILITY_DETAILS.md
 ```
 
 ### 5.3 Generate Fix Recommendations
@@ -937,7 +937,7 @@ FILE *mib_file = fopen(canonical, "r");
 
 **Save to:**
 ```
-.work/cases/<vendor>/<case>/analysis/stage_d/reports/FIX_RECOMMENDATIONS.md
+work/cases/<vendor>/<case>/analysis/stage_d/reports/FIX_RECOMMENDATIONS.md
 ```
 
 ### 5.4 Update Stage Summary
@@ -974,7 +974,7 @@ FILE *mib_file = fopen(canonical, "r");
 
 **Save to:**
 ```
-.work/cases/<vendor>/<case>/summaries/stage_d_summary.json
+work/cases/<vendor>/<case>/summaries/stage_d_summary.json
 ```
 
 ---
@@ -1001,7 +1001,7 @@ Before completing, verify:
 - [ ] Function header comments on all key handlers
 - [ ] Security annotations at all vulnerability locations
 - [ ] Complex logic explained with inline comments
-- [ ] All reports saved in correct locations (`.work/cases/`)
+- [ ] All reports saved in correct locations (`work/cases/`)
 - [ ] Evidence chain complete (code + screenshots + call graphs)
 
 ### Reproducibility
@@ -1078,7 +1078,7 @@ If you encounter:
 - **Can't find entry points** - Review `protocol-analysis/SNMP/handler_patterns.md`
 - **Unsure about vulnerability** - Check `protocol-analysis/SNMP/vulnerability_patterns.md`
 - **Tool not working** - Verify tool name in `ghidra-mcp-guides/tool_categories.md`
-- **Report format unclear** - See examples in `.work/cases/` from previous analyses
+- **Report format unclear** - See examples in `work/cases/` from previous analyses
 
 ---
 
@@ -1090,7 +1090,7 @@ You will have successfully completed this mission when:
 2. ✅ **All handlers mapped** - You know what each PDU type does
 3. ✅ **Vulnerabilities identified** - At least 1 security issue found and documented
 4. ✅ **Code enhanced** - 50+ functions renamed, 100+ variables renamed, key functions commented
-5. ✅ **Reports generated** - 3 comprehensive markdown reports in `.work/cases/`
+5. ✅ **Reports generated** - 3 comprehensive markdown reports in `work/cases/`
 6. ✅ **Evidence collected** - Call graphs, decompiled code, screenshots saved
 7. ✅ **Quality verified** - All checklist items completed
 

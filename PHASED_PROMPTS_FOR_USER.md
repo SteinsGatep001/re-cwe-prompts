@@ -313,7 +313,7 @@ Agent 会系统性地重命名函数和变量，并为每个漏洞添加详细�
 
 ### 5.1 生成完整分析报告
 
-创建文件：`.work/cases/<vendor>/<case>/analysis/stage_d/reports/FULL_ANALYSIS_REPORT.md`
+创建文件：`work/cases/<vendor>/<case>/analysis/stage_d/reports/FULL_ANALYSIS_REPORT.md`
 
 包含以下章节：
 1. 执行摘要（2-3 段）
@@ -327,7 +327,7 @@ Agent 会系统性地重命名函数和变量，并为每个漏洞添加详细�
 
 ### 5.2 生成漏洞细节报告
 
-创建文件：`.work/cases/<vendor>/<case>/analysis/stage_d/reports/VULNERABILITY_DETAILS.md`
+创建文件：`work/cases/<vendor>/<case>/analysis/stage_d/reports/VULNERABILITY_DETAILS.md`
 
 对每个漏洞，包含：
 - 漏洞位置（函数名 + 地址 + 代码行）
@@ -340,7 +340,7 @@ Agent 会系统性地重命名函数和变量，并为每个漏洞添加详细�
 
 ### 5.3 生成修复建议报告
 
-创建文件：`.work/cases/<vendor>/<case>/analysis/stage_d/reports/FIX_RECOMMENDATIONS.md`
+创建文件：`work/cases/<vendor>/<case>/analysis/stage_d/reports/FIX_RECOMMENDATIONS.md`
 
 分为三类建议：
 
@@ -362,13 +362,13 @@ Agent 会系统性地重命名函数和变量，并为每个漏洞添加详细�
 ### 5.4 保存证据文件
 
 - 导出调用图：get_full_call_graph(format="mermaid")
-- 保存到：`.work/cases/<vendor>/<case>/analysis/stage_d/evidence/call_graphs/`
+- 保存到：`work/cases/<vendor>/<case>/analysis/stage_d/evidence/call_graphs/`
 - 对关键函数截图
 - 保存反编译代码
 
 ### 5.5 更新 Stage D 摘要
 
-创建文件：`.work/cases/<vendor>/<case>/summaries/stage_d_summary.json`
+创建文件：`work/cases/<vendor>/<case>/summaries/stage_d_summary.json`
 
 格式：
 {
@@ -426,7 +426,7 @@ Agent 会生成 3 个详细的分析报告和 stage_d_summary.json。
 - [ ] 所有关键处理函数都有函数头注释
 - [ ] 所有漏洞位置都有安全注释
 - [ ] 复杂逻辑有内联注释
-- [ ] 所有报告都保存在正确位置 (.work/cases/)
+- [ ] 所有报告都保存在正确位置 (work/cases/)
 - [ ] 证据链完整（代码+截图+调用图）
 
 ### 可重现性检查：

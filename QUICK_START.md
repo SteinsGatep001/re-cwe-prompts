@@ -85,7 +85,7 @@ print(f"✓ Base: {metadata['base_address']}")
 
 # 3. Check case context exists
 import os
-case_path = ".work/cases/<vendor>/<case>/"
+case_path = "work/cases/<vendor>/<case>/"
 assert os.path.exists(case_path + "context/case_context.json")
 print(f"✓ Case context loaded")
 ```
@@ -116,7 +116,7 @@ list_imports(limit=200)                     # Imported functions
 list_strings(filter="snmp", limit=100)      # SNMP strings
 ```
 
-**Output:** `.work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/phase1_context.md`
+**Output:** `work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/phase1_context.md`
 
 ---
 
@@ -143,7 +143,7 @@ if any(const in code.lower() for const in ['0xa0', '0xa1', '0xa3']):
     print(f"✓ PDU DISPATCHER FOUND: {func['name']}")
 ```
 
-**Output:** `.work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/entrypoints.md`
+**Output:** `work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/entrypoints.md`
 
 ---
 
@@ -173,9 +173,9 @@ if 'system' in code or 'popen' in code:
 ```
 
 **Outputs:**
-- `.work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/handlers.md`
-- `.work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/risk_functions.md`
-- `.work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/data_flow.md`
+- `work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/handlers.md`
+- `work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/risk_functions.md`
+- `work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/data_flow.md`
 
 ---
 
@@ -257,10 +257,10 @@ file_fd              # int
    - Testing procedures
 
 **Outputs:**
-- `.work/cases/<vendor>/<case>/analysis/stage_d/reports/FULL_ANALYSIS_REPORT.md`
-- `.work/cases/<vendor>/<case>/analysis/stage_d/reports/VULNERABILITY_DETAILS.md`
-- `.work/cases/<vendor>/<case>/analysis/stage_d/reports/FIX_RECOMMENDATIONS.md`
-- `.work/cases/<vendor>/<case>/summaries/stage_d_summary.json`
+- `work/cases/<vendor>/<case>/analysis/stage_d/reports/FULL_ANALYSIS_REPORT.md`
+- `work/cases/<vendor>/<case>/analysis/stage_d/reports/VULNERABILITY_DETAILS.md`
+- `work/cases/<vendor>/<case>/analysis/stage_d/reports/FIX_RECOMMENDATIONS.md`
+- `work/cases/<vendor>/<case>/summaries/stage_d_summary.json`
 
 ---
 

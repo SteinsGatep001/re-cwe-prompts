@@ -74,7 +74,7 @@ These cases integrate with the GhidraSage pipeline:
 
 - **Stage D (Interactive RE)**: Use phased guides during GUI-based deep analysis
 - **MCP Integration**: Session seeds assume MCP servers are running (`check_connection()`)
-- **Artifact Storage**: All outputs follow `.work/cases/<vendor>/<case>/` structure
+- **Artifact Storage**: All outputs follow `work/cases/<vendor>/<case>/` structure
 - **Report Generation**: Phase 5 templates align with Stage D reporting standards
 
 ## Contributing
