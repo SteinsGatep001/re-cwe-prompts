@@ -1,4 +1,4 @@
-# GhidraSage Deep Analysis - Quick Start Guide
+# AnalystSage Deep Analysis - Quick Start Guide
 
 **For AI Agents performing SNMP vulnerability analysis in Ghidra GUI mode**
 
@@ -11,7 +11,7 @@ Professional reverse engineer / security researcher tasked with deep SNMP vulner
 
 ### What You Need
 1. Read: `prompts/re-cwe-prompts/INDEX.md` (navigation hub)
-2. Read: `prompts/re-cwe-prompts/master-prompts/ghidrasage_deep_analysis.md` (your workflow)
+2. Read: `prompts/re-cwe-prompts/master-prompts/analystsage_deep_analysis.md` (your workflow)
 3. Load documents **on-demand** using INDEX as reference
 
 ### What You Do
@@ -36,7 +36,7 @@ Follow 5-phase workflow:
    - Use: Reference throughout workflow
 
 2. **Master Prompt** - Your workflow guide
-   - Path: `prompts/re-cwe-prompts/master-prompts/ghidrasage_deep_analysis.md`
+   - Path: `prompts/re-cwe-prompts/master-prompts/analystsage_deep_analysis.md`
    - Purpose: Complete 5-phase orchestration
    - Use: Follow step-by-step instructions
 
@@ -392,7 +392,7 @@ metadata = get_metadata()
 
 **Step 3:** Load critical documents:
 - INDEX.md
-- master-prompts/ghidrasage_deep_analysis.md
+- master-prompts/analystsage_deep_analysis.md
 - protocol-analysis/SNMP/analysis_checklist.md
 
 **Step 4:** Begin Phase 1 (Context Preparation)

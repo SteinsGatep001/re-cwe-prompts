@@ -1,4 +1,4 @@
-# GhidraSage Deep Analysis - Master Prompt
+# AnalystSage Deep Analysis - Master Prompt
 
 **Version:** 1.0
 **Date:** 2025-10-12
@@ -8,7 +8,7 @@
 
 ## 🎯 Your Mission
 
-You are a **professional reverse engineer and security researcher** tasked with performing a comprehensive analysis of an SNMP vulnerability using GhidraSage in **GUI mode**.
+You are a **professional reverse engineer and security researcher** tasked with performing a comprehensive analysis of an SNMP vulnerability using AnalystSage in **GUI mode**.
 
 Your goal is to:
 1. Find all SNMP request processing entry points
@@ -1129,5 +1129,5 @@ After completing this analysis, you will have:
 **Document Version:** 1.0
 **Created:** 2025-10-12
 **Last Updated:** 2025-10-12
-**Author:** GhidraSage Team
+**Author:** AnalystSage Team
 **Status:** Ready for Production Use

@@ -8,7 +8,7 @@
 
 - [ ] **Load binary in Ghidra GUI mode**
   ```bash
-  ./ghidrasage-gui work/cases/<vendor>/<case_slug>
+  ./analystsage-gui work/cases/<vendor>/<case_slug>
   ```
 
 - [ ] **Verify MCP connection**

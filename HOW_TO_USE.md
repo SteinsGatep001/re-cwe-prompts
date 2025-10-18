@@ -1,4 +1,4 @@
-# 如何使用 GhidraSage 深度分析系统 - 完整指南
+# 如何使用 AnalystSage 深度分析系统 - 完整指南
 
 **目标读者:** 需要指导 AI Agent 完成 SNMP 漏洞深度分析的用户
 
@@ -21,7 +21,7 @@
 │   → 缺点: 需要你持续参与
 │
 └─ 📚 深入理解整个分析流程？
-    → 阅读: master-prompts/ghidrasage_deep_analysis.md
+    → 阅读: master-prompts/analystsage_deep_analysis.md
     → 理解完整的 5 阶段工作流
     → 优点: 完全理解，可以自定义
     → 缺点: 文档较长 (500+ 行)
@@ -40,8 +40,8 @@
 
 **1. 启动 Ghidra GUI**
 ```bash
-cd /home/dev13/Documents/Tools/Develop/AI/GhidraSage
-./ghidrasage-gui work/cases/<vendor>/<case_slug>
+cd /home/dev13/Documents/Tools/Develop/AI/AnalystSage
+./analystsage-gui work/cases/<vendor>/<case_slug>
 ```
 
 **2. 启动新的 AI Agent 会话**
@@ -84,7 +84,7 @@ prompts/re-cwe-prompts/START_HERE.md
 
 **1. 启动 Ghidra GUI**
 ```bash
-./ghidrasage-gui work/cases/<vendor>/<case_slug>
+./analystsage-gui work/cases/<vendor>/<case_slug>
 ```
 
 **2. 阅读分阶段提示词文档**
@@ -155,7 +155,7 @@ work/docs/DEEP_REVERSE_ENGINEERING_OPTIMIZATION_PLAN.md
 
 **2. 阅读完整的主提示词**
 ```
-prompts/re-cwe-prompts/master-prompts/ghidrasage_deep_analysis.md
+prompts/re-cwe-prompts/master-prompts/analystsage_deep_analysis.md
 ```
 - 500+ 行完整的工作流程
 - 包含所有阶段的详细代码示例
@@ -193,7 +193,7 @@ prompts/re-cwe-prompts/protocol-analysis/SNMP/
 
 ```bash
 # 1. 启动 Ghidra GUI
-./ghidrasage-gui work/cases/cisco/CVE-2025-20362
+./analystsage-gui work/cases/cisco/CVE-2025-20362
 
 # 2. 新 Claude 会话，发送：
 你是专业逆向工程师，任务是分析 SNMP 漏洞。
@@ -212,7 +212,7 @@ prompts/re-cwe-prompts/protocol-analysis/SNMP/
 
 ```bash
 # 1. 启动 Ghidra GUI
-./ghidrasage-gui work/cases/cisco/CVE-2025-20362
+./analystsage-gui work/cases/cisco/CVE-2025-20362
 
 # 2. 阅读
 cat prompts/re-cwe-prompts/PHASED_PROMPTS_FOR_USER.md
@@ -251,7 +251,7 @@ cat prompts/re-cwe-prompts/PHASED_PROMPTS_FOR_USER.md
 ps aux | grep ghidra
 
 # 重新启动 GUI
-./ghidrasage-gui work/cases/<vendor>/<case>
+./analystsage-gui work/cases/<vendor>/<case>
 ```
 
 ### Q2: Agent 找不到 SNMP 入口点
@@ -395,7 +395,7 @@ work/cases/<vendor>/<case>/analysis/stage_d/deep_analysis/phase1_notes.md
 
 **文档版本:** 1.0
 **创建日期:** 2025-10-12
-**适用于:** GhidraSage v2.8+ with Stage D
+**适用于:** AnalystSage v2.8+ with Stage D
 **状态:** 生产就绪
 
 祝你分析顺利！🎯

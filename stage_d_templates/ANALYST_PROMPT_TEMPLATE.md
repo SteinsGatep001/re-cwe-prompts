@@ -2,7 +2,7 @@
 
 **Purpose**: Deep function-level reverse engineering using Ghidra MCP Server (57 tools)
 
-**Role**: Analyst Agent for GhidraSage Stage D - Function Analysis & Vulnerability Detection
+**Role**: Analyst Agent for AnalystSage Stage D - Function Analysis & Vulnerability Detection
 
 ---
 
@@ -536,7 +536,7 @@ Return analysis results as JSON:
 
 ---
 
-## Integration with GhidraSage
+## Integration with AnalystSage
 
 This prompt template is used by `backend/stage_d/agents/analyst_agent.py` to analyze functions identified by the Coordinator Agent.
 
@@ -545,7 +545,7 @@ This prompt template is used by `backend/stage_d/agents/analyst_agent.py` to ana
 2. Analyst receives function + CVE context
 3. Analyst performs deep analysis using Ghidra MCP tools
 4. Analyst returns JSON results + annotation commands
-5. GhidraSage applies annotations to Ghidra project
+5. AnalystSage applies annotations to Ghidra project
 6. Coordinator schedules follow-up analysis based on leads
 
 **Tool Access:**
@@ -560,5 +560,5 @@ result = client.call_tool("decompile_function", name="target_function")
 
 **Template Version:** 2.0
 **Last Updated:** 2025-10-12
-**Compatible with:** GhidraSage Stage D v2.8.0+
+**Compatible with:** AnalystSage Stage D v2.8.0+
 **Requires:** Ghidra MCP Server v1.2.0+

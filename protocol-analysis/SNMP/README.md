@@ -261,6 +261,6 @@ When searching for SNMP code, use these keywords:
 ---
 
 **Created:** 2025-10-12
-**Purpose:** SNMP-specific analysis guidance for GhidraSage workflows
+**Purpose:** SNMP-specific analysis guidance for AnalystSage workflows
 **Audience:** Security researchers analyzing SNMP vulnerabilities
 **Status:** Complete (4 template files)

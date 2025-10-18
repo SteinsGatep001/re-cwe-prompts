@@ -68,9 +68,9 @@ Effective case templates should include:
 5. **Expected outputs**: What artifacts should be produced?
 6. **Reference links**: Point to relevant CWE guides, workflows, and tool notes
 
-## Integration with GhidraSage
+## Integration with AnalystSage
 
-These cases integrate with the GhidraSage pipeline:
+These cases integrate with the AnalystSage pipeline:
 
 - **Stage D (Interactive RE)**: Use phased guides during GUI-based deep analysis
 - **MCP Integration**: Session seeds assume MCP servers are running (`check_connection()`)

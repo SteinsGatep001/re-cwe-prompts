@@ -88,7 +88,7 @@ Complete Analysis Workflow
 
 ## 🔗 Related Documentation
 
-### Within GhidraSage Project
+### Within AnalystSage Project
 - **Comprehensive Reference:** `tool-notes/Ghidra_MCP_Comprehensive.md` (569 lines)
 - **Stage D Architecture:** `docs/stage_d/core/02-architecture.md`
 - **Interactive RE Workflow:** `docs/stage_d/guides/10-interactive-reverse-engineering.md`
@@ -174,7 +174,7 @@ batch_2 = list_functions(offset=100, limit=100)
 ### MCP Connection Issues
 **Problem:** `check_connection()` fails
 **Solution:**
-1. Check MCP mode status: `python3 ghidrasage_cli.py mcp-status`
+1. Check MCP mode status: `python3 analystsage_cli.py mcp-status`
 2. Ensure correct mode is running (GUI or Headless)
 3. Verify endpoint: `http://127.0.0.1:8765/mcp`
 
@@ -220,5 +220,5 @@ Please update this documentation or create an issue in the project repository.
 ---
 
 **Created:** 2025-10-12
-**Purpose:** Universal Ghidra MCP guidance for GhidraSage workflows
+**Purpose:** Universal Ghidra MCP guidance for AnalystSage workflows
 **Audience:** Reverse engineers, security researchers, vulnerability analysts

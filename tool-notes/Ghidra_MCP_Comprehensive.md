@@ -545,15 +545,15 @@ for crypto_func in crypto_funcs:
 
 ---
 
-## 🔗 Integration with GhidraSage
+## 🔗 Integration with AnalystSage
 
-This tool reference is designed to be used with GhidraSage Stage D (Interactive Reverse Engineering). The MCP tools are accessed through:
+This tool reference is designed to be used with AnalystSage Stage D (Interactive Reverse Engineering). The MCP tools are accessed through:
 
 ```python
 # In Stage D workflow
 from backend.src.gs_mcp_client import GhidraMCPClient
 
-client = GhidraMCPClient(endpoint="http://ghidrasage-mcp:8765/mcp")
+client = GhidraMCPClient(endpoint="http://analystsage-mcp:8765/mcp")
 
 # Use tools
 metadata = client.call_tool("get_metadata")

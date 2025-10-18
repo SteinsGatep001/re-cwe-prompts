@@ -129,7 +129,7 @@ for string_item in community_strings:
 **现在才需要读完整的指导文档:**
 
 ```
-prompts/re-cwe-prompts/master-prompts/ghidrasage_deep_analysis.md
+prompts/re-cwe-prompts/master-prompts/analystsage_deep_analysis.md
 ```
 - 直接跳到 "Phase 3: Deep Analysis" 部分
 - 按照里面的代码示例逐步执行

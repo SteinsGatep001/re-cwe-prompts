@@ -102,7 +102,7 @@ Good annotations transform incomprehensible decompiled code into readable, maint
 //   - Community string already verified by caller
 //
 // ANALYSIS DATE: 2025-10-12
-// ANALYST: Claude (GhidraSage Analysis)
+// ANALYST: Claude (AnalystSage Analysis)
 // ============================================================================
 ```
 

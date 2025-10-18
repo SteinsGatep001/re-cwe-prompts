@@ -1,4 +1,4 @@
-# GhidraSage Prompt Templates - Complete Index
+# AnalystSage Prompt Templates - Complete Index
 
 **Last Updated:** 2025-10-12
 **Purpose:** Central navigation hub for all reverse engineering templates and guides
@@ -7,7 +7,7 @@
 
 ## 🚀 Quick Start for AI Agents
 
-### 👉 New to GhidraSage? Start Here:
+### 👉 New to AnalystSage? Start Here:
 
 **⚡ Fastest Start (30 seconds):**
 ```
@@ -27,7 +27,7 @@ For AI Agents performing analysis:
 
 **For Complete SNMP Analysis (All-in-one):**
 ```
-1. Read: master-prompts/ghidrasage_deep_analysis.md (5-phase workflow)
+1. Read: master-prompts/analystsage_deep_analysis.md (5-phase workflow)
 2. Read: protocol-analysis/SNMP/analysis_checklist.md (concrete steps)
 3. Reference: Use this INDEX.md to find specific tools as needed
 ```
@@ -51,7 +51,7 @@ prompts/re-cwe-prompts/
 ├── 🗺️ INDEX.md                     ← **导航中心 (本文件)**
 │
 ├── 🎯 master-prompts/              ← **NEW: AI Agent Orchestration**
-│   ├── ghidrasage_deep_analysis.md   (Main workflow prompt)
+│   ├── analystsage_deep_analysis.md   (Main workflow prompt)
 │   ├── gui_mode_setup.md              (GUI configuration)
 │   └── quality_checklist.md           (QA standards)
 │
@@ -138,7 +138,7 @@ prompts/re-cwe-prompts/
 
 | Task | Document | Type |
 |------|----------|------|
-| **Complete SNMP analysis** | `master-prompts/ghidrasage_deep_analysis.md` | NEW |
+| **Complete SNMP analysis** | `master-prompts/analystsage_deep_analysis.md` | NEW |
 | **Step-by-step SNMP checklist** | `protocol-analysis/SNMP/analysis_checklist.md` | NEW |
 | **Understand MCP tools** | `ghidra-mcp-guides/tool_categories.md` | NEW |
 | **Learn analysis workflows** | `ghidra-mcp-guides/common_workflows.md` | NEW |
@@ -182,7 +182,7 @@ prompts/re-cwe-prompts/
 ## 📊 Document Priority for AI Agents
 
 ### 🔴 Critical (Load First)
-1. **`master-prompts/ghidrasage_deep_analysis.md`** - Main orchestration (if doing SNMP)
+1. **`master-prompts/analystsage_deep_analysis.md`** - Main orchestration (if doing SNMP)
 2. **`protocol-analysis/SNMP/analysis_checklist.md`** - Step-by-step workflow (if doing SNMP)
 3. **`workflows/discover_routes.md`** - Generic entry point discovery
 
@@ -210,7 +210,7 @@ prompts/re-cwe-prompts/
 ```
 Time: 15 min reading + 4-5 hours analysis
 
-1. [5 min]  master-prompts/ghidrasage_deep_analysis.md
+1. [5 min]  master-prompts/analystsage_deep_analysis.md
             Purpose: Understand 5-phase workflow
 
 2. [10 min] protocol-analysis/SNMP/analysis_checklist.md
@@ -267,7 +267,7 @@ Time: 45 min comprehensive reading
 
 ### SNMP Analysis Flow
 ```
-master-prompts/ghidrasage_deep_analysis.md (orchestration)
+master-prompts/analystsage_deep_analysis.md (orchestration)
     ↓
 protocol-analysis/SNMP/analysis_checklist.md (concrete steps)
     ↓
@@ -350,7 +350,7 @@ workflows/generate_report.md (create report)
 
 **Example: SNMP Path Traversal Analysis**
 ```
-1. Start: master-prompts/ghidrasage_deep_analysis.md (NEW)
+1. Start: master-prompts/analystsage_deep_analysis.md (NEW)
    → Understand 5-phase workflow
 
 2. Protocol: protocol-analysis/SNMP/ (NEW)
@@ -376,7 +376,7 @@ workflows/generate_report.md (create report)
 all_docs = [read(doc) for doc in all_documents]  # ❌ Wastes tokens
 
 # DO: Load on-demand
-master_prompt = read("master-prompts/ghidrasage_deep_analysis.md")
+master_prompt = read("master-prompts/analystsage_deep_analysis.md")
 # ... execute Phase 1 ...
 tools_guide = read("ghidra-mcp-guides/tool_categories.md")  # When needed
 # ... execute Phase 2 ...
@@ -415,7 +415,7 @@ naming_guide = read("ghidra-mcp-guides/renaming_standards.md")
 
 | Question | Document |
 |----------|----------|
-| How do GhidraSage stages work? | `../../ARCHITECTURE.md` |
+| How do AnalystSage stages work? | `../../ARCHITECTURE.md` |
 | How to use Stage D? | `../../docs/stage_d/README.md` |
 | What MCP tools are available? | `ghidra-mcp-guides/tool_categories.md` |
 | How to find SNMP handlers? | `protocol-analysis/SNMP/handler_patterns.md` |
@@ -459,7 +459,7 @@ naming_guide = read("ghidra-mcp-guides/renaming_standards.md")
 │  QUICK START FOR AI AGENTS                                 │
 │                                                            │
 │  SNMP CVE Analysis:                                        │
-│    1. master-prompts/ghidrasage_deep_analysis.md           │
+│    1. master-prompts/analystsage_deep_analysis.md           │
 │    2. protocol-analysis/SNMP/analysis_checklist.md         │
 │    3. Reference others as needed via this INDEX            │
 │                                                            │
@@ -478,6 +478,6 @@ naming_guide = read("ghidra-mcp-guides/renaming_standards.md")
 ---
 
 **Created:** 2025-10-12
-**Purpose:** Complete navigation hub for all GhidraSage prompt templates
+**Purpose:** Complete navigation hub for all AnalystSage prompt templates
 **Coverage:** 60+ documents, 300KB+ structured guidance
 **Status:** Active and maintained

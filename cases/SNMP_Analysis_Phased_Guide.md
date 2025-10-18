@@ -4,7 +4,7 @@
 
 **Target Scenario**: Network device firmware with SNMP daemon/agent implementation
 **Estimated Time**: 5-6 hours total
-**Tool Requirements**: Ghidra GUI + GhidraSage MCP, or IDA Pro + IDA MCP
+**Tool Requirements**: Ghidra GUI + AnalystSage MCP, or IDA Pro + IDA MCP
 
 ---
 
@@ -161,7 +161,7 @@ Begin Phase 3: Deep Vulnerability Analysis
 This is the most important phase - you must find security vulnerabilities.
 
 Reference documentation:
-- prompts/re-cwe-prompts/master-prompts/ghidrasage_deep_analysis.md
+- prompts/re-cwe-prompts/master-prompts/analystsage_deep_analysis.md
   (Jump to "Phase 3: Deep Analysis" section)
 - prompts/re-cwe-prompts/protocol-analysis/SNMP/vulnerability_patterns.md
   (Review 5 common vulnerability patterns)
@@ -332,7 +332,7 @@ Begin Phase 5: Report Generation
 Goal: Generate 3 complete analysis reports
 
 Reference report templates:
-- prompts/re-cwe-prompts/master-prompts/ghidrasage_deep_analysis.md
+- prompts/re-cwe-prompts/master-prompts/analystsage_deep_analysis.md
   (See "Phase 5: Report Generation" section)
 
 ### 5.1 Generate Full Analysis Report

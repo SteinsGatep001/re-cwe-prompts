@@ -145,7 +145,7 @@ Agent 会找到入口点、分发器和主要处理函数，并报告它们的�
 这是最重要的阶段，你需要找到安全漏洞。
 
 参考文档：
-- prompts/re-cwe-prompts/master-prompts/ghidrasage_deep_analysis.md
+- prompts/re-cwe-prompts/master-prompts/analystsage_deep_analysis.md
   跳到 "Phase 3: Deep Analysis" 部分
 - prompts/re-cwe-prompts/protocol-analysis/SNMP/vulnerability_patterns.md
   查看 5 种常见漏洞模式
@@ -308,7 +308,7 @@ Agent 会系统性地重命名函数和变量，并为每个漏洞添加详细�
 目标：生成 3 个完整的分析报告
 
 参考报告模板：
-- prompts/re-cwe-prompts/master-prompts/ghidrasage_deep_analysis.md
+- prompts/re-cwe-prompts/master-prompts/analystsage_deep_analysis.md
   查看 "Phase 5: Report Generation" 部分
 
 ### 5.1 生成完整分析报告
