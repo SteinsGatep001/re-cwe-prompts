@@ -553,7 +553,7 @@ This tool reference is designed to be used with AnalystSage Stage D (Interactive
 # In Stage D workflow
 from backend.src.gs_mcp_client import GhidraMCPClient
 
-client = GhidraMCPClient(endpoint="http://analystsage-mcp:8765/mcp")
+client = GhidraMCPClient(endpoint="http://analystsage-headless-mcp:8765/mcp")
 
 # Use tools
 metadata = client.call_tool("get_metadata")
