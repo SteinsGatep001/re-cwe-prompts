@@ -21,7 +21,7 @@ Usage examples
 - POST JSON:
   - `python3 re-cwe-prompts/scripts/http/request.py --target-json re-cwe-prompts/targets-local/http-example.local-8000/target.json --method POST --path /api/test --json '{"a":1}'`
 - POST multipart file:
-  - `python3 re-cwe-prompts/scripts/http/request.py --target-json re-cwe-prompts/targets-local/http-example.local-8000/target.json --method POST --path /upload --file field=@/tmp/demo.txt;type=text/plain`
+  - `python3 re-cwe-prompts/scripts/http/request.py --target-json re-cwe-prompts/targets-local/http-example.local-8000/target.json --method POST --path /upload --file field=@work/cases/.../temp/demo.txt;type=text/plain`
 
 Notes
 - Evidence and cookies are written to the private, gitignored folder under `targets-local/<target-key>/evidence/`.
